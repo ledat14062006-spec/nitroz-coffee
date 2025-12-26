@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Tuyển dụng NITROZ Coffee</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f27f0d",
+                        "background-light": "#f8f7f5",
+                        "background-dark": "#221910", // Dark chocolate/coffee tone
+                        "surface-dark": "#2e2319", // Slightly lighter for cards
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        /* Custom scrollbar hide for horizontal scroll */
+        
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white antialiased overflow-x-hidden selection:bg-primary selection:text-white pb-24">
+    <!-- Top App Bar -->
+    <div class="sticky top-0 z-50 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md border-b border-gray-200 dark:border-white/10">
+        <div class="flex items-center p-4 justify-between h-16">
+            <div class="flex size-10 shrink-0 items-center justify-center rounded-full active:bg-gray-200 dark:active:bg-white/10 transition-colors cursor-pointer">
+                <span class="material-symbols-outlined text-slate-900 dark:text-white" style="font-size: 24px;">arrow_back</span>
+            </div>
+            <h1 class="text-lg font-bold leading-tight tracking-tight flex-1 text-center">NITROZ Careers</h1>
+            <div class="flex size-10 items-center justify-center rounded-full active:bg-gray-200 dark:active:bg-white/10 transition-colors cursor-pointer">
+                <span class="material-symbols-outlined text-slate-900 dark:text-white" style="font-size: 24px;">menu</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="p-4 pt-6">
+        <div class="relative flex flex-col items-start justify-end rounded-2xl overflow-hidden shadow-lg aspect-[4/5] md:aspect-video w-full group">
+            <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Barista smiling while pouring coffee art in a cozy dark coffee shop" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB_vo-OiGRdYlhQO_-jfZiPla1YxUB807CHO7CSYRiJH3tuzJhOF1wPddxilML3npI4aRck4jvkUBFpq7T6SNvC2fgu7DAMxi1qZ89DgryYBnmKAfzRxTy6Ib7ng1PWXvAxHkRtdNaMntub2NEjM9OJmsRj9icBZ0vbuVbCfmHxst172OQaK022I6OGveXwA9rmN2H6tAsdwVAuH11dV8O1XIrim29eIEgtbJHpJAm2SMChWLaGs_FXscAu6BgZs8R6UFGjKmND7cY");'>
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+            <div class="relative z-10 p-6 flex flex-col gap-3 w-full">
+                <div class="inline-flex items-center gap-2 self-start rounded-full bg-primary/90 px-3 py-1 text-xs font-bold text-white backdrop-blur-sm">
+                    <span class="material-symbols-outlined text-[14px]">school</span>
+                    <span>Không cần bằng cấp</span>
+                </div>
+                <h2 class="text-3xl font-bold leading-tight text-white">
+                    Gia nhập đội ngũ <span class="text-primary">NITROZ</span>
+                </h2>
+                <p class="text-gray-200 text-sm font-medium leading-relaxed max-w-[90%]">
+                    Chúng tôi không tìm kiếm những tấm bằng, chúng tôi tìm kiếm niềm đam mê với hạt cà phê. Đào tạo từ A-Z.
+                </p>
+                <button class="mt-2 flex w-full items-center justify-center rounded-xl bg-primary h-12 text-white text-base font-bold shadow-lg shadow-primary/25 active:scale-95 transition-transform">
+                    Xem cơ hội việc làm
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- Why Choose Us -->
+    <div class="mt-2">
+        <div class="flex items-center justify-between px-5 pb-3 pt-4">
+            <h2 class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">Tại sao chọn chúng tôi?</h2>
+        </div>
+        <div class="grid grid-cols-2 gap-3 px-4">
+            <!-- Benefit 1 -->
+            <div class="flex flex-col gap-3 rounded-xl border border-gray-100 dark:border-white/10 bg-white dark:bg-surface-dark p-4 shadow-sm">
+                <div class="size-10 flex items-center justify-center rounded-full bg-primary/10 text-primary">
+                    <span class="material-symbols-outlined">workspace_premium</span>
+                </div>
+                <div>
+                    <h3 class="text-sm font-bold text-slate-900 dark:text-white">Đào tạo bài bản</h3>
+                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Học nghề miễn phí</p>
+                </div>
+            </div>
+            <!-- Benefit 2 -->
+            <div class="flex flex-col gap-3 rounded-xl border border-gray-100 dark:border-white/10 bg-white dark:bg-surface-dark p-4 shadow-sm">
+                <div class="size-10 flex items-center justify-center rounded-full bg-primary/10 text-primary">
+                    <span class="material-symbols-outlined">payments</span>
+                </div>
+                <div>
+                    <h3 class="text-sm font-bold text-slate-900 dark:text-white">Thu nhập tốt</h3>
+                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Lương + Thưởng + Tip</p>
+                </div>
+            </div>
+            <!-- Benefit 3 -->
+            <div class="flex flex-col gap-3 rounded-xl border border-gray-100 dark:border-white/10 bg-white dark:bg-surface-dark p-4 shadow-sm">
+                <div class="size-10 flex items-center justify-center rounded-full bg-primary/10 text-primary">
+                    <span class="material-symbols-outlined">schedule</span>
+                </div>
+                <div>
+                    <h3 class="text-sm font-bold text-slate-900 dark:text-white">Linh hoạt</h3>
+                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Xoay ca theo lịch học</p>
+                </div>
+            </div>
+            <!-- Benefit 4 -->
+            <div class="flex flex-col gap-3 rounded-xl border border-gray-100 dark:border-white/10 bg-white dark:bg-surface-dark p-4 shadow-sm">
+                <div class="size-10 flex items-center justify-center rounded-full bg-primary/10 text-primary">
+                    <span class="material-symbols-outlined">trending_up</span>
+                </div>
+                <div>
+                    <h3 class="text-sm font-bold text-slate-900 dark:text-white">Thăng tiến</h3>
+                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Lộ trình rõ ràng</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Open Positions -->
+    <div class="mt-6">
+        <div class="flex items-center justify-between px-5 pb-3">
+            <h2 class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">Vị trí đang tuyển</h2>
+            <a class="text-xs font-semibold text-primary hover:text-primary/80" href="#">Xem tất cả</a>
+        </div>
+        <div class="flex flex-col gap-4 px-4">
+            <!-- Job Card 1 -->
+            <div class="group relative flex flex-col rounded-xl border border-gray-100 dark:border-white/10 bg-white dark:bg-surface-dark shadow-sm overflow-hidden">
+                <div class="flex p-4 gap-4">
+                    <div class="h-20 w-20 shrink-0 rounded-lg bg-cover bg-center" data-alt="Close up of espresso extraction from a coffee machine" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDGdJSiqH5PJQkDJOmkY2brsL8TIxqz8q-sCtMf36i2XHpT3v-OScYZHSISkFjq3JHH-pyJR0-lRnuxR4VXrxnXVxtA1n6JTSQQxDj42pLKbAkBFKepYPj6rg1ou31YfTZNo6vB_eqn3NpVDjNqUfhAIXSywnhBUwi6euYZiGEJkxLicW9dduOOoGfwq3JtiEA9klRVNZquFzZqk4oorlpyXOps1lGEh5BmvFL0be89LOZvP2ju3Igf4ltPds5hTjQSfK0P4VC7iaM");'>
+                    </div>
+                    <div class="flex flex-col justify-center flex-1 min-w-0">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-base font-bold text-slate-900 dark:text-white truncate">Barista Full-time</h3>
+                            <span class="rounded bg-green-500/10 px-2 py-0.5 text-[10px] font-bold text-green-600 dark:text-green-400 uppercase tracking-wide">Hot</span>
+                        </div>
+                        <p class="text-xs font-medium text-primary mt-1">7.000.000đ - 10.000.000đ</p>
+                        <div class="flex items-center gap-2 mt-2 text-gray-500 dark:text-gray-400">
+                            <span class="material-symbols-outlined text-[14px]">location_on</span>
+                            <span class="text-xs truncate">Quận 1, TP.HCM</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between border-t border-gray-100 dark:border-white/5 bg-gray-50 dark:bg-white/5 px-4 py-3">
+                    <div class="flex -space-x-2 overflow-hidden">
+                        <img alt="" class="inline-block h-6 w-6 rounded-full ring-2 ring-white dark:ring-[#2e2319]" data-alt="Small avatar of an employee" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCE1tqrW_RgI0o0RMMnaHfEYgJPnDc7rvbZQRz52VzA86AGXimku5Eg2a2AQmF_d2LwvoxQwtPKFgMJR1p5ZOJ2omFpP3kv2D47QUT5ZpCzQT5ZqaTX3Eq9G4coyg-M_4nJxwaPMjf0IIQthAY77YzioXtdnP8migxpcgrZRODb8A9odJFYdUYFbP_h5c9SMDvtG4cnuEq1mLIMz5_aVmO5Raygr0D0vXqtMFUhhofmFl2b-lZrT6-2dokkRM5u5WwhOebZxGSCfGQ"
+                        />
+                        <img alt="" class="inline-block h-6 w-6 rounded-full ring-2 ring-white dark:ring-[#2e2319]" data-alt="Small avatar of an employee" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2oIn9j8ZknZ7rC05u4koxlQfN_zLJ_rYTjxCUqk99yxGb8RQ_KkGhDmHzhihkwdy40gN9qn3qlHPCdPxo3Q95dNVqb6Xv4UPIOYJBUoB8lvW1zYpxR643bFMRADx_Ld97UNw5tPO_zm7w0s_n5EpAmMnYmAAYPPtvufakik77g8oxwtzuDhvdNx3vqnnBubdlD83kY_XDg9mgIcoskLizFtaM90L-6Ow6SjvnW0Vcgi-AL-NOfJQsE6Mloyl7QCcXJ697HtDGw9w"
+                        />
+                        <span class="flex items-center justify-center h-6 w-6 rounded-full ring-2 ring-white dark:ring-[#2e2319] bg-gray-200 text-[10px] font-medium text-gray-600">+8</span>
+                    </div>
+                    <button class="text-xs font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors flex items-center gap-1">
+                        Ứng tuyển ngay <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+                </div>
+            </div>
+            <!-- Job Card 2 -->
+            <div class="group relative flex flex-col rounded-xl border border-gray-100 dark:border-white/10 bg-white dark:bg-surface-dark shadow-sm overflow-hidden">
+                <div class="flex p-4 gap-4">
+                    <div class="h-20 w-20 shrink-0 rounded-lg bg-cover bg-center" data-alt="Waiter holding a tray of drinks" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDCun4oxBzdNuwnvj0hv_HANbcQs-MErWvicKnqCugceM3lCh8F1MhUSMOsAt5crPyLxIDpj7gJtMah-Q0pYS3hu0TiYuiLzfkorwhIyCUDBTLaJSkykCejTYNtug_EqtFUcWL-NrpOK28OSaOkKqkpbsCFW_O1-KQtXCyDEJwURQvUnuf9kMnbiaMou92mK8LyG3OblSd2d9_IFMSWc-4LQ-rL6A_GhX5JsjN4J0AbiPRNLShfmjHTf7NlSvt7hFHXgP-V5AFEWTg");'>
+                    </div>
+                    <div class="flex flex-col justify-center flex-1 min-w-0">
+                        <h3 class="text-base font-bold text-slate-900 dark:text-white truncate">Nhân viên Phục vụ</h3>
+                        <p class="text-xs font-medium text-primary mt-1">25.000đ - 35.000đ / giờ</p>
+                        <div class="flex items-center gap-2 mt-2 text-gray-500 dark:text-gray-400">
+                            <span class="material-symbols-outlined text-[14px]">location_on</span>
+                            <span class="text-xs truncate">Nhiều chi nhánh</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between border-t border-gray-100 dark:border-white/5 bg-gray-50 dark:bg-white/5 px-4 py-3">
+                    <span class="text-[10px] font-medium text-gray-500 uppercase tracking-wider">Part-time / Full-time</span>
+                    <button class="text-xs font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors flex items-center gap-1">
+                        Ứng tuyển ngay <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+                </div>
+            </div>
+            <!-- Job Card 3 -->
+            <div class="group relative flex flex-col rounded-xl border border-gray-100 dark:border-white/10 bg-white dark:bg-surface-dark shadow-sm overflow-hidden">
+                <div class="flex p-4 gap-4">
+                    <div class="h-20 w-20 shrink-0 rounded-lg bg-cover bg-center" data-alt="Kitchen staff preparing food" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCODXWwnlEAVqLXRJXTkvmGiis-pyRUP9f-6uy7O4aaRnO-MRi_NVbioiIUzWmS9u0MhQ6DZ4B_a5RHy3HI-CvAKXyGal36WUklgNH1uWnjxZbiS2ow2PaDxmN_zxjCYZBHwy9re23AMQxm-ABhMElhfcjrHi2aIk-Td2P1t5x_gbi1svZOAOJENhtBedEFLMLObQE5cppxF4A6C3v8c-qnFtySosZ72yoTbKw0N-Dx2RHR05C1hS_yNakuVf2GyrlvlL42pp2uYbQ");'>
+                    </div>
+                    <div class="flex flex-col justify-center flex-1 min-w-0">
+                        <h3 class="text-base font-bold text-slate-900 dark:text-white truncate">Phụ bếp / Bếp bánh</h3>
+                        <p class="text-xs font-medium text-primary mt-1">6.000.000đ - 9.000.000đ</p>
+                        <div class="flex items-center gap-2 mt-2 text-gray-500 dark:text-gray-400">
+                            <span class="material-symbols-outlined text-[14px]">location_on</span>
+                            <span class="text-xs truncate">Quận 3, TP.HCM</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between border-t border-gray-100 dark:border-white/5 bg-gray-50 dark:bg-white/5 px-4 py-3">
+                    <span class="text-[10px] font-medium text-gray-500 uppercase tracking-wider">Đào tạo nghề</span>
+                    <button class="text-xs font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors flex items-center gap-1">
+                        Ứng tuyển ngay <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Culture/Team Slider Placeholder -->
+    <div class="mt-8 mb-8 pl-4">
+        <h2 class="text-xl font-bold tracking-tight text-slate-900 dark:text-white mb-4 pr-4">Văn hóa NITROZ</h2>
+        <div class="flex gap-3 overflow-x-auto no-scrollbar pb-2 pr-4">
+            <div class="shrink-0 w-48 aspect-[3/4] rounded-xl bg-cover bg-center relative overflow-hidden" data-alt="Happy young team members high-fiving in uniform" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD42qBCmx0RwiU5fNC1aPiLPj3zIbXop4FnpVb0y11Jk1SdyrPjuRXEkzVIaHhNQD86rm4gbKeyLrD1JX7Q48Vz1eUH3yBGeeBbqOn3vDnnYvG__hBNz8BjFNbmDz_H-YW47W_-EyNyCwNiUk0Z98RaIhvfRwdHiE1Wp-WG8ok1s--seiZ8-oWWytaC-jU67QtSbtrGoPumqAAQaQd3FlXjA1aI-_QMjVFarQoKR26r8qxwYHtqKjgs0fSmJxNsRpSTm7RtMBwotD8");'>
+                <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 to-transparent p-3 pt-10">
+                    <p class="text-white text-xs font-bold">Teamwork là số 1</p>
+                </div>
+            </div>
+            <div class="shrink-0 w-48 aspect-[3/4] rounded-xl bg-cover bg-center relative overflow-hidden" data-alt="Employee receiving an award or recognition" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD6iD8uo3idc6qFQL-oLqEIDMLdxhya39BKVfa7-YZq-zHwxwAs8knf6Py7ata1FyixrCj6Cya3s0vLpPpG4ruR6YJINv1AVDYSmh-JITdg1emyu2K6rHNwjv7KvbODRIkZBJv9x9266xigpLg2xSeGbkeuGPvFDeysrB1_jvMKMkVH-06_hrxBqa3hB0SFMO-XVBs0yzXXYxTZa--7bc60V_JWd5clAN_HNZ5yoq5v3o3OJPeTr3k9HTlhjcUchTzpHrt8crSf01w");'>
+                <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 to-transparent p-3 pt-10">
+                    <p class="text-white text-xs font-bold">Vinh danh hàng tháng</p>
+                </div>
+            </div>
+            <div class="shrink-0 w-48 aspect-[3/4] rounded-xl bg-cover bg-center relative overflow-hidden" data-alt="Coffee tasting event" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAMn74wuVfVOXswEysXzxPrZ3MzvkuDhsmhUX3DGbxjvmUpzmRPGNV2YPYtKAR6mxdpzbOophbuC4J2P6Y7PZGtM1nqDme4lbx2cIDKAjnyiOdWq4st_6jznoKGKp_ktZAgKv8yt_k0hWWUPMdW8QoZvmK1w0HaUCjtuJ_AIyAHBaA1_8QfCf-7VeQTHRq-wx1tIn0eWZRpWsgOQZUgo45w0LLCo1DPlo8GNDRCk4VVFKaQDBE-aSHk7ZZW8Zpe4XLiZgQaK9wmgDg");'>
+                <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 to-transparent p-3 pt-10">
+                    <p class="text-white text-xs font-bold">Workshop Cà phê</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Sticky Bottom Action -->
+    <div class="fixed bottom-0 left-0 right-0 z-40 bg-background-light dark:bg-background-dark border-t border-gray-200 dark:border-white/10 p-4 pb-8 backdrop-blur-lg bg-opacity-95 dark:bg-opacity-95">
+        <div class="flex items-center justify-between gap-4 max-w-md mx-auto">
+            <div class="flex flex-col">
+                <span class="text-[10px] text-gray-500 dark:text-gray-400 uppercase tracking-wide font-semibold">Hotline Tuyển dụng</span>
+                <span class="text-sm font-bold text-slate-900 dark:text-white">0909 123 456</span>
+            </div>
+            <button class="flex-1 bg-primary hover:bg-primary/90 text-white font-bold h-12 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-primary/20 transition-all active:scale-95">
+<span class="material-symbols-outlined">send</span>
+                Nộp hồ sơ ngay
+            </button>
+        </div>
+    </div>
+</body>
+
+</html>

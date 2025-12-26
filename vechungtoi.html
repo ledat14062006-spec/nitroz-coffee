@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html class="dark" lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Câu chuyện NITROZ</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;family=Noto+Sans:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f27f0d",
+                        "background-light": "#f8f7f5",
+                        "background-dark": "#1a1613", // Deep rich black-brown
+                        "surface-dark": "#241e19", // Slightly lighter
+                        "accent-gold": "#d4af37",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "xl": "1rem",
+                        "2xl": "1.5rem",
+                        "3xl": "2rem",
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+         ::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+         ::-webkit-scrollbar-track {
+            background: #1a1613;
+        }
+        
+         ::-webkit-scrollbar-thumb {
+            background: #332d26;
+            border-radius: 3px;
+        }
+        
+         ::-webkit-scrollbar-thumb:hover {
+            background: #f27f0d;
+        }
+        
+        .text-glow {
+            text-shadow: 0 0 30px rgba(242, 127, 13, 0.4);
+        }
+        
+        .smooth-scroll {
+            scroll-behavior: smooth;
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-[#181411] dark:text-white font-body antialiased selection:bg-primary selection:text-white overflow-x-hidden smooth-scroll">
+    <nav class="fixed top-0 w-full z-50 bg-background-dark/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
+        <div class="container mx-auto px-4 lg:px-8 h-20 flex items-center justify-between">
+            <a class="flex items-center gap-2 group" href="#">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-orange-600 flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-primary/20">N</div>
+                <span class="text-2xl font-black tracking-tighter text-white font-display">NITROZ<span class="text-primary group-hover:text-white transition-colors">.</span></span>
+            </a>
+
+            <a class="hover:text-primary font-medium transition-colors" href="nitroz.html">Trang chủ</a>
+            <a class="hover:text-primary font-medium transition-colors" href="thucdon.html">Thực đơn</a>
+            <a class="hover:text-primary font-medium transition-colors" href="vechungtoi.html">Về chúng tôi</a>
+            <a class="hover:text-primary font-medium transition-colors" href="cuahang.html">Cửa hàng</a>
+            <a class="hover:text-primary font-medium transition-colors" href="khuyenmai.html">Khuyến mãi</a>
+            <a class="hover:text-primary font-medium transition-colors" href="tuyendung.html">Tuyển dụng</a>
+            <nav>
+                <div class="flex items-center gap-3">
+                    <button class="size-10 flex items-center justify-center rounded-full text-white/80 hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined">search</span>
+</button>
+                    <button class="size-10 flex items-center justify-center rounded-full text-white/80 hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined">shopping_bag</span>
+</button>
+                    <button class="lg:hidden size-10 flex items-center justify-center rounded-full text-white hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined">menu</span>
+</button>
+                    <a class="hidden lg:flex h-10 px-6 items-center justify-center bg-primary hover:bg-orange-600 text-white font-bold rounded-full text-sm uppercase tracking-wider transition-all shadow-[0_0_15px_rgba(242,127,13,0.3)] hover:shadow-[0_0_25px_rgba(242,127,13,0.5)]"
+                        href="#">
+                    Đặt món
+                </a>
+                </div>
+        </div>
+        </nav>
+        <header class="relative w-full h-[85vh] min-h-[600px] flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed" data-alt="Hero image" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCwVXlKlI76loIks6qEG1-UyHqbUu24li2fvqDcbvNimFAroqPqiy8gzDBlzmtHvn-_KTf2kT56IY1P4VHHg0Dv84EONzZpPcjYWBkuOJiD7r1omoFuxK9ADUHY0QWQyj4IYa4OS_40nZrlxtJxZWspeFWwqMTysfqW1Xjdd5j5OloH8JcNBqKcYeD2SAzsr8wusyyv5jS9oBkKgScsE21kF1P1S1fH9k4H7RdL7h6fW4_sSsaymWYlaBlSpm1VEI6Tc2KN3iKCXcA");'>
+                <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-background-dark"></div>
+            </div>
+            <div class="relative z-10 container mx-auto px-6 text-center flex flex-col items-center gap-6">
+                <div class="animate-fade-in-up">
+                    <span class="inline-block px-4 py-1.5 border border-primary/50 bg-primary/10 backdrop-blur-md rounded-full text-primary text-xs font-bold uppercase tracking-[0.2em] mb-4">
+                    Established 2018
+                </span>
+                </div>
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-black text-white leading-tight tracking-tight font-display text-glow drop-shadow-2xl max-w-5xl">
+                    Hành trình từ <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-orange-300">hạt cà phê</span> đến cảm xúc
+                </h1>
+                <p class="text-lg md:text-xl text-white/80 max-w-2xl font-light leading-relaxed">
+                    Tại NITROZ, mỗi ly cà phê là một câu chuyện về đam mê, sự tỉ mỉ và khao khát mang đến nguồn năng lượng thuần khiết nhất.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 mt-8">
+                    <button class="px-8 py-4 bg-white text-background-dark font-bold rounded-full hover:bg-gray-200 transition-colors uppercase tracking-wider text-sm flex items-center gap-2">
+                    Khám phá ngay <span class="material-symbols-outlined text-lg">arrow_downward</span>
+</button>
+                </div>
+            </div>
+        </header>
+        <main class="relative z-20 bg-background-dark">
+            <section class="border-y border-white/5 bg-surface-dark/50 py-12">
+                <div class="container mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                    <div class="flex flex-col gap-1">
+                        <span class="text-3xl md:text-4xl font-black text-primary font-display">100%</span>
+                        <span class="text-xs md:text-sm text-white/60 uppercase tracking-widest">Hạt Robusta Việt Nam</span>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <span class="text-3xl md:text-4xl font-black text-primary font-display">1500m</span>
+                        <span class="text-xs md:text-sm text-white/60 uppercase tracking-widest">Độ cao canh tác</span>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <span class="text-3xl md:text-4xl font-black text-primary font-display">24h</span>
+                        <span class="text-xs md:text-sm text-white/60 uppercase tracking-widest">Ủ lạnh Nitro Cold Brew</span>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <span class="text-3xl md:text-4xl font-black text-primary font-display">12+</span>
+                        <span class="text-xs md:text-sm text-white/60 uppercase tracking-widest">Cửa hàng toàn quốc</span>
+                    </div>
+                </div>
+            </section>
+            <section class="py-20 lg:py-32 overflow-hidden">
+                <div class="container mx-auto px-6">
+                    <div class="grid lg:grid-cols-2 gap-16 items-center">
+                        <div class="relative group">
+                            <div class="absolute -inset-4 bg-gradient-to-r from-primary/20 to-purple-500/20 rounded-3xl blur-2xl opacity-50 group-hover:opacity-100 transition duration-700"></div>
+                            <div class="relative w-full aspect-[4/5] lg:aspect-square overflow-hidden rounded-3xl shadow-2xl">
+                                <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBQDufPOzVOebNs6WzKEDCWuLbs7dPluHRZihzjCqwUQw-TnSAkskVQI5nRCA-2lduUu_HGJOq8oj8nPyQ_Anpk0Z-zpQDmD5KQrZDLcIkFHJynReOBjqBlAVwW4XQncfrlvqeN6I5ciMykEhwultZcsay6j5AOaLSiaOBYi833u2YzZjyuw0BXQgUPsoYJ2BR3hh1NFsucx_zVb0dIYwnWdgJ0ViJoJYV_7EeIKsUQanq97N3du3OeudE0BLvGc9lkOS2xBjc6WgA");'></div>
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                                <div class="absolute bottom-6 left-6 right-6">
+                                    <div class="bg-black/40 backdrop-blur-md border border-white/10 p-4 rounded-xl">
+                                        <p class="text-white text-sm font-medium"><span class="material-symbols-outlined align-bottom mr-1 text-primary">location_on</span> Cầu Đất, Lâm Đồng</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-8">
+                            <div>
+                                <span class="text-primary font-bold uppercase tracking-widest text-sm mb-2 block">Nguồn gốc</span>
+                                <h2 class="text-4xl md:text-5xl lg:text-6xl font-black text-white font-display leading-tight mb-6">
+                                    Đánh thức hạt mầm <br/> từ đại ngàn
+                                </h2>
+                                <p class="text-lg text-white/70 leading-relaxed text-justify md:text-left">
+                                    Câu chuyện của chúng tôi bắt đầu từ những đồi cà phê bạt ngàn tại Cầu Đất. Tại đây, khí hậu ôn hòa và thổ nhưỡng bazan màu mỡ đã nuôi dưỡng nên những hạt cà phê Robusta và Arabica đậm đà nhất.
+                                </p>
+                                <p class="text-lg text-white/70 leading-relaxed mt-4 text-justify md:text-left">
+                                    NITROZ cam kết đồng hành cùng người nông dân trong quy trình canh tác bền vững, nói không với hóa chất độc hại, để giữ trọn vẹn hương vị nguyên bản của đất trời trong từng tách cà phê.
+                                </p>
+                            </div>
+                            <div class="flex gap-4">
+                                <a class="text-white border-b border-primary pb-1 hover:text-primary transition-colors font-bold uppercase tracking-wider text-sm" href="#">Xem thêm về nông trại</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="py-20 lg:py-32 bg-surface-dark relative">
+                <div class="absolute top-0 right-0 w-1/3 h-full bg-primary/5 blur-3xl pointer-events-none"></div>
+                <div class="container mx-auto px-6">
+                    <div class="grid lg:grid-cols-2 gap-16 items-center">
+                        <div class="flex flex-col gap-8 order-2 lg:order-1">
+                            <div>
+                                <span class="text-primary font-bold uppercase tracking-widest text-sm mb-2 block">Kỹ thuật Rang</span>
+                                <h2 class="text-4xl md:text-5xl lg:text-6xl font-black text-white font-display leading-tight mb-6">
+                                    Bản giao hưởng của <br/> Lửa &amp; Thời gian
+                                </h2>
+                                <p class="text-lg text-white/70 leading-relaxed text-justify md:text-left">
+                                    Rang cà phê là một nghệ thuật cân bằng mong manh. Các nghệ nhân rang xay của NITROZ không chỉ dựa vào máy móc hiện đại mà còn sử dụng mọi giác quan để lắng nghe "tiếng nổ" của hạt cà phê.
+                                </p>
+                                <p class="text-lg text-white/70 leading-relaxed mt-4 text-justify md:text-left">
+                                    Công thức rang mộc độc quyền giúp khơi dậy những nốt hương tiềm ẩn: vị đắng chocolate đen hòa quyện cùng hậu vị ngọt caramel, tạo nên dấu ấn không thể nhầm lẫn.
+                                </p>
+                            </div>
+                            <ul class="space-y-4">
+                                <li class="flex items-center gap-4 text-white/80">
+                                    <span class="flex items-center justify-center size-8 rounded-full bg-primary/20 text-primary"><span class="material-symbols-outlined text-sm">check</span></span>
+                                    <span>Rang mộc 100% không tẩm ướp</span>
+                                </li>
+                                <li class="flex items-center gap-4 text-white/80">
+                                    <span class="flex items-center justify-center size-8 rounded-full bg-primary/20 text-primary"><span class="material-symbols-outlined text-sm">check</span></span>
+                                    <span>Quy trình Fresh Roast (Rang mới mỗi ngày)</span>
+                                </li>
+                                <li class="flex items-center gap-4 text-white/80">
+                                    <span class="flex items-center justify-center size-8 rounded-full bg-primary/20 text-primary"><span class="material-symbols-outlined text-sm">check</span></span>
+                                    <span>Kiểm soát nhiệt độ bằng công nghệ số</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="relative group order-1 lg:order-2">
+                            <div class="absolute -inset-4 bg-gradient-to-l from-orange-600/20 to-red-500/20 rounded-3xl blur-2xl opacity-50 group-hover:opacity-100 transition duration-700"></div>
+                            <div class="relative w-full aspect-[4/5] lg:aspect-square overflow-hidden rounded-3xl shadow-2xl">
+                                <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCPLJEILS_lvQwTsCELmVZyJ55V_mFfTchn80eyVGviq_D0_OH_5EZqsx204yhDtpeW5AsvgvFjt3Ys6mb2ikxQYDAJPTuHs5DdE5xOaJfcrnpw1eqZcoQQAugHltxbfPO-3NLTXcImD6Sutth0yajgPYEyHhOkGFbdBGhV_dTGMgu8VYD9E2a9bLjfO81G56TQqzxS1KYaWnDoT6DuLl1eySHfpiCWRfD3poGILMYbzZjacZftq50LUp_oZBmDEELoTmQ3BeD7blU");'></div>
+                                <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="py-24 relative overflow-hidden flex items-center justify-center">
+                <div class="absolute inset-0 bg-cover bg-center bg-fixed opacity-30 blur-sm scale-110" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDaVDzSj7PLdVElzyAQ5tdz2n77MwBJWfmb4jSpU_AucWfK5Xwvs4kUTrwtkC-9LdK_uJTtUW9QrsrzHChnr4WsApMv3IyGiGYbRIBcENeTqd-FnZOjclpu9J8QBaIMne3mSjpoKGSPPVI4sAlAunis1gh-Et7sMPfDA-QWS3FeqiJBxbGOeWGpGyWgqzXhLxDwZPxLEBDiiuSVVz8oF5lcIT7LzMsHwy87sLluqKtUyJLuOpZdIM8lcSXR0TKJnlUosi9p4iXx9a4");'></div>
+                <div class="absolute inset-0 bg-background-dark/80"></div>
+                <div class="container relative z-10 px-6 max-w-4xl mx-auto text-center">
+                    <span class="material-symbols-outlined text-primary text-6xl md:text-8xl opacity-50 mb-6">format_quote</span>
+                    <p class="text-3xl md:text-4xl lg:text-5xl font-medium text-white italic leading-tight mb-10 font-display">
+                        "Chúng tôi không chỉ phục vụ cà phê. Chúng tôi phục vụ năng lượng cho những giấc mơ và không gian cho những kết nối chân thật."
+                    </p>
+                    <div class="flex items-center justify-center gap-4">
+                        <div class="h-px w-12 bg-primary"></div>
+                        <span class="text-white font-bold uppercase tracking-widest">The NITROZ Philosophy</span>
+                        <div class="h-px w-12 bg-primary"></div>
+                    </div>
+                </div>
+            </section>
+            <section class="py-20 lg:py-32">
+                <div class="container mx-auto px-6">
+                    <div class="text-center max-w-3xl mx-auto mb-20">
+                        <span class="text-primary font-bold uppercase tracking-widest text-sm mb-2 block">Trải nghiệm</span>
+                        <h2 class="text-4xl md:text-5xl font-black text-white font-display mb-6">Nghệ thuật &amp; Không gian</h2>
+                        <p class="text-white/70 text-lg">Nơi kỹ thuật pha chế đỉnh cao gặp gỡ không gian kiến trúc đầy cảm hứng.</p>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
+                        <div class="group relative bg-surface-dark rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border border-white/5">
+                            <div class="h-80 w-full overflow-hidden">
+                                <div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDiV_sy79lAAz7K4MjdJDTfnbPnp9BYArLCIRBk8rQYobYeOYPOyZGqq82QmyzPK4YN_-2H7Ug3ozX8z2PA8FVbLhIMS4_MsBHFXOnvLqinrUloQa_ojr0kXt6tPvtNzrlPWUlACdityZj41c4a4bMkwojy1HrHebiYwFwm-7gSjIqm6vexYReU23wTb3B5aahPm_ZkuLTQkuVWYfCLgKq515zphmGsK6gJFlXnKtue_Q6Ejh6W97oKCt-7HJorMWF6SJUSclEDnbM");'></div>
+                            </div>
+                            <div class="p-8 lg:p-10">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <span class="p-2 bg-primary/10 rounded-lg text-primary"><span class="material-symbols-outlined">local_cafe</span></span>
+                                    <h3 class="text-2xl font-bold text-white">Tâm huyết Barista</h3>
+                                </div>
+                                <p class="text-white/70 leading-relaxed mb-6">
+                                    Mỗi ly cà phê được trao đến tay bạn là kết quả của hàng ngàn giờ luyện tập. Từ độ mịn của bột, áp suất máy đến kỹ thuật Latte Art điêu luyện.
+                                </p>
+                                <a class="inline-flex items-center text-primary font-bold hover:text-white transition-colors" href="#">
+                                Xem menu đồ uống <span class="material-symbols-outlined ml-1 text-lg">arrow_forward</span>
+</a>
+                            </div>
+                        </div>
+                        <div class="group relative bg-surface-dark rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border border-white/5">
+                            <div class="h-80 w-full overflow-hidden">
+                                <div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDatpmi9XMWetTIR31LgG64x0jvZvKPYVPgUBDW_dfar78JXBw9rWsee4pV1QL2zcxEtzLw6zTXoS5us-nGOwlc0jkMCYtRr3X4vNHn7zHHjv0j5_Engh3c1dFeJwnGIC0E_bugxnFdOAU_IqpUWgTAD7nE0qz3HxHAM1taaSyMhmCyAWU2_LmVYTnSXLzFAzP3a7HHtlaWsQj-DNokmh-SmMYI6i5jaCkmU-rDJJPOSFacHreedun5FnAMuli2Bql-9oMMnVpnHCo");'></div>
+                            </div>
+                            <div class="p-8 lg:p-10">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <span class="p-2 bg-primary/10 rounded-lg text-primary"><span class="material-symbols-outlined">chair</span></span>
+                                    <h3 class="text-2xl font-bold text-white">Không gian Chill</h3>
+                                </div>
+                                <p class="text-white/70 leading-relaxed mb-6">
+                                    Thiết kế tối giản với tông màu trầm ấm, ánh sáng dịu nhẹ và playlist nhạc được tuyển chọn kỹ lưỡng. Nơi lý tưởng để "trốn" khỏi ồn ào phố thị.
+                                </p>
+                                <a class="inline-flex items-center text-primary font-bold hover:text-white transition-colors" href="#">
+                                Tìm cửa hàng gần nhất <span class="material-symbols-outlined ml-1 text-lg">arrow_forward</span>
+</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="py-20 bg-primary relative overflow-hidden">
+                <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+                <div class="absolute -top-24 -left-24 w-64 h-64 bg-white/20 rounded-full blur-3xl"></div>
+                <div class="absolute -bottom-24 -right-24 w-64 h-64 bg-black/20 rounded-full blur-3xl"></div>
+                <div class="container mx-auto px-6 relative z-10 text-center">
+                    <h2 class="text-4xl md:text-5xl font-black text-white font-display mb-6">Sẵn sàng trải nghiệm?</h2>
+                    <p class="text-white/90 text-lg mb-10 max-w-2xl mx-auto">Đặt hàng ngay hôm nay để nhận ưu đãi giảm 20% cho đơn hàng đầu tiên qua Website.</p>
+                    <div class="flex flex-col sm:flex-row justify-center gap-4">
+                        <button class="px-8 py-4 bg-white text-primary font-bold rounded-full hover:bg-gray-100 transition-colors shadow-xl">Đặt hàng ngay</button>
+                        <button class="px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-full hover:bg-white/10 transition-colors">Xem địa chỉ quán</button>
+                    </div>
+                </div>
+            </section>
+            <footer class="bg-[#110e0c] pt-20 pb-10 border-t border-white/5">
+                <div class="container mx-auto px-6">
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                        <div class="flex flex-col gap-6">
+                            <span class="text-3xl font-black tracking-tighter text-white font-display">NITROZ<span class="text-primary">.</span></span>
+                            <p class="text-white/60 text-sm leading-relaxed">
+                                Thương hiệu cà phê Việt Nam với sứ mệnh nâng tầm trải nghiệm thưởng thức cà phê đương đại.
+                            </p>
+                            <div class="flex gap-4">
+                                <a class="size-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-primary hover:text-white transition-colors" href="#">
+                                    <span class="material-symbols-outlined text-lg">thumb_up</span>
+                                </a>
+                                <a class="size-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-primary hover:text-white transition-colors" href="#">
+                                    <span class="material-symbols-outlined text-lg">photo_camera</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold uppercase tracking-widest mb-6 text-sm">Khám phá</h4>
+                            <ul class="flex flex-col gap-3">
+                                <li><a class="text-white/60 hover:text-primary transition-colors text-sm" href="#">Về chúng tôi</a></li>
+                                <li><a class="text-white/60 hover:text-primary transition-colors text-sm" href="#">Menu đồ uống</a></li>
+                                <li><a class="text-white/60 hover:text-primary transition-colors text-sm" href="#">Hạt cà phê</a></li>
+                                <li><a class="text-white/60 hover:text-primary transition-colors text-sm" href="#">Tuyển dụng</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold uppercase tracking-widest mb-6 text-sm">Liên hệ</h4>
+                            <ul class="flex flex-col gap-3">
+                                <li class="flex items-start gap-3 text-white/60 text-sm">
+                                    <span class="material-symbols-outlined text-primary text-lg mt-0.5">location_on</span> 123 Nguyễn Văn Linh, Quận 7, TP.HCM
+                                </li>
+                                <li class="flex items-center gap-3 text-white/60 text-sm">
+                                    <span class="material-symbols-outlined text-primary text-lg">call</span> 1900 1234
+                                </li>
+                                <li class="flex items-center gap-3 text-white/60 text-sm">
+                                    <span class="material-symbols-outlined text-primary text-lg">mail</span> hello@nitroz.coffee
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold uppercase tracking-widest mb-6 text-sm">Đăng ký tin</h4>
+                            <p class="text-white/60 text-sm mb-4">Nhận thông tin ưu đãi mới nhất từ NITROZ.</p>
+                            <div class="flex gap-2">
+                                <input class="bg-white/5 border border-white/10 rounded-lg px-4 py-2 w-full text-white text-sm focus:outline-none focus:border-primary transition-colors" placeholder="Email của bạn" type="email" />
+                                <button class="bg-primary text-white p-2 rounded-lg hover:bg-orange-600 transition-colors">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+                        <p class="text-white/40 text-xs text-center md:text-left">© 2024 NITROZ Coffee. All rights reserved.</p>
+                        <div class="flex gap-6">
+                            <a class="text-white/40 text-xs hover:text-white" href="#">Điều khoản</a>
+                            <a class="text-white/40 text-xs hover:text-white" href="#">Bảo mật</a>
+                            <a class="text-white/40 text-xs hover:text-white" href="#">Cookie</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <div class="lg:hidden sticky bottom-0 left-0 w-full p-4 bg-background-dark/95 backdrop-blur-md border-t border-white/10">
+                <button class="w-full h-12 bg-primary text-white font-bold rounded-xl shadow-lg hover:bg-orange-600 active:scale-95 transition-all flex items-center justify-center gap-2">
+                Đặt món ngay <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+            </div>
+        </main>
+
+</body>
+
+</html>

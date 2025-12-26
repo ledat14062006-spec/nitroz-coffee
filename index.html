@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html class="dark" lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>NITROZ Coffee - Giới Thiệu &amp; Quảng Cáo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f27f0d",
+                        "primary-dark": "#d66c00",
+                        "background-light": "#f8f7f5",
+                        "background-dark": "#181411",
+                        "surface-dark": "#27211b",
+                        "text-subtle": "#baab9c"
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        body {
+            min-height: max(884px, 100dvh);
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        #tab-popular:checked~.content-container #content-popular,
+        #tab-nitro:checked~.content-container #content-nitro,
+        #tab-juice:checked~.content-container #content-juice,
+        #tab-cake:checked~.content-container #content-cake {
+            display: block;
+        }
+        
+        #tab-popular:checked~.nav-container label[for="tab-popular"],
+        #tab-nitro:checked~.nav-container label[for="tab-nitro"],
+        #tab-juice:checked~.nav-container label[for="tab-juice"],
+        #tab-cake:checked~.nav-container label[for="tab-cake"] {
+            background-color: #f27f0d !important;
+            color: white !important;
+            border-color: #f27f0d !important;
+            box-shadow: 0 10px 15px -3px rgba(242, 127, 13, 0.25);
+        }
+        
+        #tab-popular:checked~.nav-container label[for="tab-popular"] *,
+        #tab-nitro:checked~.nav-container label[for="tab-nitro"] *,
+        #tab-juice:checked~.nav-container label[for="tab-juice"] *,
+        #tab-cake:checked~.nav-container label[for="tab-cake"] * {
+            color: white !important;
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display antialiased selection:bg-primary selection:text-white">
+    <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden pb-[80px]">
+        <header class="fixed top-0 z-50 w-full bg-background-dark/95 backdrop-blur-md border-b border-white/5 px-4 lg:px-12 pt-12 pb-3 lg:py-4 shadow-lg">
+            <div class="flex items-center justify-between max-w-7xl mx-auto">
+                <button class="flex lg:hidden size-10 items-center justify-center rounded-full text-white hover:bg-white/10 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[28px]">menu</span>
+</button>
+                <div class="flex items-center gap-2.5">
+                    <div class="size-9 rounded-full bg-primary flex items-center justify-center shadow-lg shadow-primary/30">
+                        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-orange-600 flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-primary/20">N</div>
+                    </div>
+                    <h1 class="text-xl lg:text-2xl font-extrabold tracking-wide text-white">NITROZ<span class="text-primary"></span></h1>
+                </div>
+                <nav class="hidden lg:flex items-center gap-8">
+                    <a class="hover:text-primary font-medium transition-colors" href="nitroz.html">Trang chủ</a>
+                    <a class="hover:text-primary font-medium transition-colors" href="thucdon.html">Thực đơn</a>
+                    <a class="hover:text-primary font-medium transition-colors" href="vechungtoi.html">Về chúng tôi</a>
+                    <a class="hover:text-primary font-medium transition-colors" href="cuahang.html">Cửa hàng</a>
+                    <a class="hover:text-primary font-medium transition-colors" href="khuyenmai.html">Khuyến mãi</a>
+                    <a class="hover:text-primary font-medium transition-colors" href="tuyendung.html">Tuyển dụng</a>
+                </nav>
+                <div class="flex items-center gap-4">
+                    <div class="hidden lg:flex items-center gap-2 relative">
+                        <div class="relative group">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <span class="material-symbols-outlined text-text-subtle text-[18px]">search</span>
+                            </div>
+                            <input class="block w-64 rounded-full border border-white/10 bg-surface-dark py-2 pl-9 pr-4 text-sm text-white placeholder-text-subtle focus:ring-1 focus:ring-primary focus:border-primary focus:bg-[#322a22] transition-all" placeholder="Tìm kiếm món ăn..."
+                                type="text" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="h-28 lg:h-20"></div>
+        <main class="flex flex-col gap-6 lg:gap-8 max-w-7xl mx-auto w-full px-4 lg:px-8">
+            <input checked="" class="hidden" id="tab-popular" name="category" type="radio" />
+            <input class="hidden" id="tab-nitro" name="category" type="radio" />
+            <input class="hidden" id="tab-juice" name="category" type="radio" />
+            <input class="hidden" id="tab-cake" name="category" type="radio" />
+            <div class="lg:hidden px-0">
+                <p class="text-text-subtle text-sm font-medium mb-1">Khám phá hương vị NITROZ 👋</p>
+                <h2 class="text-2xl font-extrabold text-white leading-tight mb-4">Trải nghiệm không gian <span class="text-primary">đẳng cấp</span></h2>
+                <div class="relative group">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <span class="material-symbols-outlined text-text-subtle group-focus-within:text-primary transition-colors">search</span>
+                    </div>
+                    <input class="block w-full rounded-xl border-none bg-surface-dark py-3.5 pl-10 pr-4 text-white placeholder-text-subtle focus:ring-2 focus:ring-primary focus:bg-[#322a22] transition-all shadow-inner" placeholder="Bạn đang tìm món gì?" type="text" />
+                </div>
+            </div>
+            <div class="lg:mt-4">
+                <div class="relative w-full overflow-hidden rounded-2xl bg-surface-dark shadow-xl ring-1 ring-white/10 group cursor-pointer lg:grid lg:grid-cols-2 lg:items-center">
+                    <div class="relative h-72 lg:h-96 w-full lg:order-2 overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent z-10 lg:bg-gradient-to-l lg:via-transparent lg:from-transparent"></div>
+                        <div class="h-full w-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDX5fpAk_Nq1G3v7oo0KuUtreqSltnmh5Xh2r5trHL2KpDJ96Mvhjsg9KybcuPWJ47tZFt6Fu4NQb3mpkpNMtTT1ZHxBKUnaCuRwUqIYLyLE48FSZIf2nrTLb7NmtWi3D-jsGt_rPKkecmx3I1b3ncPjn989lRprcSvklN_n3yy8PGof35tbamqEYgCuqcst59UEZ8GUWRC3S6e8d_sqzsJPKkTOnucFSGNbBolN8lIZuolFKsj2n3CFEv1dVHUa8p0ay3nMUaMNzw');"></div>
+                        <div class="absolute top-4 right-4 z-20 animate-bounce">
+                            <span class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-primary/90 backdrop-blur text-white text-xs font-bold uppercase tracking-wider shadow-lg">
+<span class="material-symbols-outlined text-[14px]">new_releases</span> Mới Ra Mắt
+                            </span>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-0 left-0 z-20 p-5 w-full lg:static lg:p-12 lg:bg-surface-dark lg:h-full lg:flex lg:flex-col lg:justify-center">
+                        <span class="inline-block w-fit px-2.5 py-1 rounded-md bg-white/10 text-primary text-xs font-bold uppercase tracking-wider mb-2 lg:mb-4 border border-primary/20">Sản phẩm tiêu biểu</span>
+                        <h3 class="text-3xl lg:text-4xl font-bold text-white mb-2 lg:mb-4">Cách mạng Nitro</h3>
+                        <p class="text-gray-300 text-sm lg:text-base mb-4 lg:mb-8 line-clamp-2 lg:line-clamp-none lg:text-text-subtle">Trải nghiệm dòng chảy mượt mà, béo ngậy của Nitro Cold Brew trứ danh kết hợp cùng hương vani. Một sự thay thế sảng khoái cho lượng caffeine hàng ngày.</p>
+                        <div class="flex items-center justify-between lg:justify-start lg:gap-6">
+                            <div class="flex flex-col">
+                                <span class="text-xs text-text-subtle">Giá tham khảo</span>
+                                <span class="text-xl lg:text-2xl font-bold text-primary">135.000₫</span>
+                            </div>
+                            <button class="flex items-center gap-2 bg-white text-background-dark px-5 py-2.5 lg:px-6 lg:py-3 rounded-xl font-bold text-sm lg:text-base hover:bg-gray-100 active:scale-95 transition-all shadow-lg shadow-white/10">
+                            Xem Chi Tiết
+                            <span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col gap-3">
+                <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary">campaign</span> Ưu đãi &amp; Sự kiện
+                </h3>
+                <div class="flex gap-4 overflow-x-auto hide-scrollbar pb-2 -mx-4 px-4 snap-x lg:grid lg:grid-cols-3 lg:gap-5 lg:mx-0 lg:px-0">
+                    <div class="snap-center shrink-0 w-[280px] lg:w-auto rounded-xl bg-gradient-to-br from-orange-500 to-red-600 p-4 relative overflow-hidden h-36 flex flex-col justify-center shadow-lg group cursor-pointer transition-transform hover:scale-[1.02]">
+                        <div class="absolute right-0 bottom-0 w-24 h-24 bg-white/10 rounded-full blur-2xl group-hover:bg-white/20 transition-all"></div>
+                        <span class="text-xs font-bold bg-white/20 w-fit px-2 py-0.5 rounded text-white mb-2">Combo Sáng</span>
+                        <h4 class="text-white font-bold text-lg leading-tight">Cà phê + Bánh<br/>Chỉ 99k</h4>
+                        <p class="text-white/80 text-xs mt-1">Tiết kiệm 30% tại cửa hàng</p>
+                    </div>
+                    <div class="snap-center shrink-0 w-[280px] lg:w-auto rounded-xl bg-[#2c2620] border border-white/5 p-4 relative overflow-hidden h-36 flex items-center shadow-lg group cursor-pointer transition-transform hover:scale-[1.02]">
+                        <div class="absolute inset-0 bg-cover bg-center opacity-40 group-hover:opacity-50 transition-opacity" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCqi60-15u0UIDJL2MluJhSNjG1InzWBQWIii7ZS-jbrtdx_N0fIzyPzqZWqwpli17AiTBA_I4hwQ5zpMwmNwumZOBQyzxCrKpmj67EHC9yoSExU4QvFJkDcMFfsljBjx4rBQgw3fLcmkxmyNrq9oXc557I_6qr32cw63wtLpwHMVmKxOu-pq2RN8Sj5UHUkV4S2s2vPHAFgdcaraNEojnfZ37W1MWJ-axLxz4hSK5t1qDYcvcxtiMIV10It-Q7rVAbeFBUTJexCfY');"></div>
+                        <div class="absolute inset-0 bg-gradient-to-r from-black/90 to-transparent"></div>
+                        <div class="relative z-10">
+                            <h4 class="text-white font-bold text-lg">Workshop Pha Chế</h4>
+                            <p class="text-text-subtle text-xs mt-1 max-w-[150px]">Đăng ký tham gia<br/>vào cuối tuần này</p>
+                            <button class="mt-2 text-primary text-xs font-bold flex items-center gap-1">Xem lịch <span class="material-symbols-outlined text-[14px]">calendar_month</span></button>
+                        </div>
+                    </div>
+                    <div class="snap-center shrink-0 w-[280px] lg:w-auto rounded-xl bg-[#1e3a8a] p-4 relative overflow-hidden h-36 flex flex-col justify-center shadow-lg cursor-pointer transition-transform hover:scale-[1.02]">
+                        <div class="absolute top-0 right-0 p-3 opacity-20">
+                            <span class="material-symbols-outlined text-white text-6xl">card_membership</span>
+                        </div>
+                        <h4 class="text-white font-bold text-lg">Thành Viên Vàng</h4>
+                        <p class="text-blue-200 text-xs mt-1">Đặc quyền dành riêng cho hội viên</p>
+                        <button class="mt-3 bg-white text-blue-900 text-xs font-bold px-3 py-1.5 rounded-lg w-fit shadow-md hover:bg-blue-50 transition-colors">Tìm hiểu thêm</button>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-container flex gap-3 px-0 overflow-x-auto hide-scrollbar pb-2 lg:justify-center lg:py-2 sticky top-[80px] z-30 bg-background-dark/95 backdrop-blur py-2 -mx-4 px-4 lg:static lg:bg-transparent lg:mx-0">
+                <label class="flex h-10 shrink-0 items-center gap-x-2 rounded-full bg-surface-dark border border-white/5 px-5 hover:bg-[#393028] hover:text-white transition-all active:scale-95 cursor-pointer select-none shadow-sm" for="tab-popular">
+<span class="material-symbols-outlined text-text-subtle text-[20px] transition-colors">local_fire_department</span>
+<span class="text-text-subtle text-sm font-bold transition-colors">Phổ biến</span>
+</label>
+                <label class="flex h-10 shrink-0 items-center gap-x-2 rounded-full bg-surface-dark border border-white/5 px-5 hover:bg-[#393028] hover:text-white transition-all active:scale-95 cursor-pointer select-none shadow-sm" for="tab-nitro">
+<span class="text-text-subtle text-sm font-medium transition-colors">Cà phê Nitro</span>
+</label>
+                <label class="flex h-10 shrink-0 items-center gap-x-2 rounded-full bg-surface-dark border border-white/5 px-5 hover:bg-[#393028] hover:text-white transition-all active:scale-95 cursor-pointer select-none shadow-sm" for="tab-juice">
+<span class="text-text-subtle text-sm font-medium transition-colors">Nước Ép &amp; Trà</span>
+</label>
+                <label class="flex h-10 shrink-0 items-center gap-x-2 rounded-full bg-surface-dark border border-white/5 px-5 hover:bg-[#393028] hover:text-white transition-all active:scale-95 cursor-pointer select-none shadow-sm" for="tab-cake">
+<span class="text-text-subtle text-sm font-medium transition-colors">Bánh Ngọt</span>
+</label>
+            </div>
+            <div class="content-container pb-8">
+                <div class="tab-content" id="content-popular">
+                    <div class="flex items-center justify-between px-0 pt-2 mb-4">
+                        <h3 class="text-xl lg:text-2xl font-bold text-white">Món Phổ Biến</h3>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 px-0">
+                        <div class="group flex flex-col gap-3 rounded-xl bg-surface-dark p-3 lg:p-4 shadow-md border border-white/5 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 cursor-pointer">
+                            <div class="relative aspect-[4/5] lg:aspect-[4/3] w-full overflow-hidden rounded-lg bg-gray-800">
+                                <div class="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCqi60-15u0UIDJL2MluJhSNjG1InzWBQWIii7ZS-jbrtdx_N0fIzyPzqZWqwpli17AiTBA_I4hwQ5zpMwmNwumZOBQyzxCrKpmj67EHC9yoSExU4QvFJkDcMFfsljBjx4rBQgw3fLcmkxmyNrq9oXc557I_6qr32cw63wtLpwHMVmKxOu-pq2RN8Sj5UHUkV4S2s2vPHAFgdcaraNEojnfZ37W1MWJ-axLxz4hSK5t1qDYcvcxtiMIV10It-Q7rVAbeFBUTJexCfY');"></div>
+                                <div class="absolute top-2 left-2 bg-primary text-white text-[10px] font-bold px-2 py-1 rounded shadow-sm">Best Seller</div>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold leading-tight line-clamp-1 lg:text-lg">Nitro Caramel Muối</h4>
+                                <p class="text-text-subtle text-xs lg:text-sm mt-1">Béo ngậy &amp; Ngọt ngào</p>
+                                <div class="mt-2 flex items-center justify-between">
+                                    <span class="text-white font-bold lg:text-lg">129.000₫</span>
+                                    <div class="flex items-center gap-0.5 text-yellow-500 text-[10px] lg:text-xs">
+                                        <span class="material-symbols-outlined text-[14px] lg:text-[16px] fill-1">star</span>
+                                        <span class="text-text-subtle font-medium">4.8</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group flex flex-col gap-3 rounded-xl bg-surface-dark p-3 lg:p-4 shadow-md border border-white/5 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 cursor-pointer">
+                            <div class="relative aspect-[4/5] lg:aspect-[4/3] w-full overflow-hidden rounded-lg bg-gray-800">
+                                <div class="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCh2DRnbMqF84IyltV5V37Aetfj4Qs0a2gGLBOe45dyIVhdiZ3QpTWFmM-w6x_fk3QCkXdBM9j3X8S90WiEKLdFImGTECjeEacEIpBsIeI7V60r4M_nc279AaK8JwqjIcGhCwSAQ_eol5NL8r3aAUxCMzw9W5wW-wGz5D8P6yPmK8FVAjACJNqe3fuND_Uo662xtBYUFM2eu2VFDXlZBGsmI7qEBfBFv3X7gklzX1uDktVn0ns8yZ_Z_ItotoC74wt0aFo_SN2SaFU');"></div>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold leading-tight line-clamp-1 lg:text-lg">Espresso Tonic</h4>
+                                <p class="text-text-subtle text-xs lg:text-sm mt-1">Hương chanh sảng khoái</p>
+                                <div class="mt-2 flex items-center justify-between">
+                                    <span class="text-white font-bold lg:text-lg">115.000₫</span>
+                                    <div class="flex items-center gap-0.5 text-yellow-500 text-[10px] lg:text-xs">
+                                        <span class="material-symbols-outlined text-[14px] lg:text-[16px] fill-1">star</span>
+                                        <span class="text-text-subtle font-medium">4.6</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group flex flex-col gap-3 rounded-xl bg-surface-dark p-3 lg:p-4 shadow-md border border-white/5 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 cursor-pointer">
+                            <div class="relative aspect-[4/5] lg:aspect-[4/3] w-full overflow-hidden rounded-lg bg-gray-800">
+                                <div class="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBpWAAxxUrlpmm2GEzI8rC-DDX44aj6V9X0LNCk8xh0u1ucZCaCMGrTOgzx6Gf98ZcBsT42g3UmwYaIjQwPsqwg9fkT_U88Jg8r0dzKD3pfLZIObE0hELBVSDU6ZnETBcxB_5AmaGy6WfVFPNMOPZspqNWYf1RLt_ljiGzEFn7D06Y04CbZtv2mRgFjdz_gHoZ_zgywqjfD9YsRKHYWMz_baWh99Eoe4uma6PrTWrKRvZJ2X2XvOwCSu6Fyoyeb1DzV7aUqrt5mQm4');"></div>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold leading-tight line-clamp-1 lg:text-lg">Bánh Sừng Bò Hạnh Nhân</h4>
+                                <p class="text-text-subtle text-xs lg:text-sm mt-1">Giòn tan &amp; Thơm bơ</p>
+                                <div class="mt-2 flex items-center justify-between">
+                                    <span class="text-white font-bold lg:text-lg">85.000₫</span>
+                                    <div class="flex items-center gap-0.5 text-yellow-500 text-[10px] lg:text-xs">
+                                        <span class="material-symbols-outlined text-[14px] lg:text-[16px] fill-1">star</span>
+                                        <span class="text-text-subtle font-medium">4.9</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group flex flex-col gap-3 rounded-xl bg-surface-dark p-3 lg:p-4 shadow-md border border-white/5 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 cursor-pointer">
+                            <div class="relative aspect-[4/5] lg:aspect-[4/3] w-full overflow-hidden rounded-lg bg-gray-800">
+                                <img src="./hình ảnh/thanh-pham-273.jpg" class="w-full aspect-[4/3] object-cover rounded-xl mb-3" alt="Trà Đào Cam Sả"> </div>
+                            <div>
+                                <h4 class="text-white font-bold leading-tight line-clamp-1 lg:text-lg">Trà Đào Cam Sả</h4>
+                                <p class="text-text-subtle text-xs lg:text-sm mt-1">Thanh mát &amp; Nhiệt đới</p>
+                                <div class="mt-2 flex items-center justify-between">
+                                    <span class="text-white font-bold lg:text-lg">69.000₫</span>
+                                    <div class="flex items-center gap-0.5 text-yellow-500 text-[10px] lg:text-xs">
+                                        <span class="material-symbols-outlined text-[14px] lg:text-[16px] fill-1">star</span>
+                                        <span class="text-text-subtle font-medium">4.7</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group flex flex-col gap-3 rounded-xl bg-surface-dark p-3 lg:p-4 shadow-md border border-white/5 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 cursor-pointer">
+                            <div class="relative aspect-[4/5] lg:aspect-[4/3] w-full overflow-hidden rounded-lg bg-gray-800">
+                                <div class="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDX5fpAk_Nq1G3v7oo0KuUtreqSltnmh5Xh2r5trHL2KpDJ96Mvhjsg9KybcuPWJ47tZFt6Fu4NQb3mpkpNMtTT1ZHxBKUnaCuRwUqIYLyLE48FSZIf2nrTLb7NmtWi3D-jsGt_rPKkecmx3I1b3ncPjn989lRprcSvklN_n3yy8PGof35tbamqEYgCuqcst59UEZ8GUWRC3S6e8d_sqzsJPKkTOnucFSGNbBolN8lIZuolFKsj2n3CFEv1dVHUa8p0ay3nMUaMNzw');"></div>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold leading-tight line-clamp-1 lg:text-lg">Cold Brew Truyền Thống</h4>
+                                <p class="text-text-subtle text-xs lg:text-sm mt-1">Đậm vị cà phê ủ lạnh</p>
+                                <div class="mt-2 flex items-center justify-between">
+                                    <span class="text-white font-bold lg:text-lg">75.000₫</span>
+                                    <div class="flex items-center gap-0.5 text-yellow-500 text-[10px] lg:text-xs">
+                                        <span class="material-symbols-outlined text-[14px] lg:text-[16px] fill-1">star</span>
+                                        <span class="text-text-subtle font-medium">4.5</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group flex flex-col gap-3 rounded-xl bg-surface-dark p-3 lg:p-4 shadow-md border border-white/5 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 cursor-pointer">
+                            <div class="relative aspect-[4/5] lg:aspect-[4/3] w-full overflow-hidden rounded-lg bg-gray-800">
+                                <div class="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBpWAAxxUrlpmm2GEzI8rC-DDX44aj6V9X0LNCk8xh0u1ucZCaCMGrTOgzx6Gf98ZcBsT42g3UmwYaIjQwPsqwg9fkT_U88Jg8r0dzKD3pfLZIObE0hELBVSDU6ZnETBcxB_5AmaGy6WfVFPNMOPZspqNWYf1RLt_ljiGzEFn7D06Y04CbZtv2mRgFjdz_gHoZ_zgywqjfD9YsRKHYWMz_baWh99Eoe4uma6PrTWrKRvZJ2X2XvOwCSu6Fyoyeb1DzV7aUqrt5mQm4');"></div>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold leading-tight line-clamp-1 lg:text-lg">Croissant Trứng Muối</h4>
+                                <p class="text-text-subtle text-xs lg:text-sm mt-1">Vị mặn ngọt hòa quyện</p>
+                                <div class="mt-2 flex items-center justify-between">
+                                    <span class="text-white font-bold lg:text-lg">95.000₫</span>
+                                    <div class="flex items-center gap-0.5 text-yellow-500 text-[10px] lg:text-xs">
+                                        <span class="material-symbols-outlined text-[14px] lg:text-[16px] fill-1">star</span>
+                                        <span class="text-text-subtle font-medium">4.8</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group flex flex-col gap-3 rounded-xl bg-surface-dark p-3 lg:p-4 shadow-md border border-white/5 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 cursor-pointer">
+                            <div class="relative aspect-[4/5] lg:aspect-[4/3] w-full overflow-hidden rounded-lg bg-gray-800">
+                                <div class="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCh2DRnbMqF84IyltV5V37Aetfj4Qs0a2gGLBOe45dyIVhdiZ3QpTWFmM-w6x_fk3QCkXdBM9j3X8S90WiEKLdFImGTECjeEacEIpBsIeI7V60r4M_nc279AaK8JwqjIcGhCwSAQ_eol5NL8r3aAUxCMzw9W5wW-wGz5D8P6yPmK8FVAjACJNqe3fuND_Uo662xtBYUFM2eu2VFDXlZBGsmI7qEBfBFv3X7gklzX1uDktVn0ns8yZ_Z_ItotoC74wt0aFo_SN2SaFU');"></div>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold leading-tight line-clamp-1 lg:text-lg">Trà Vải Hoa Hồng</h4>
+                                <p class="text-text-subtle text-xs lg:text-sm mt-1">Thơm nhẹ nhàng &amp; Tinh tế</p>
+                                <div class="mt-2 flex items-center justify-between">
+                                    <span class="text-white font-bold lg:text-lg">79.000₫</span>
+                                    <div class="flex items-center gap-0.5 text-yellow-500 text-[10px] lg:text-xs">
+                                        <span class="material-symbols-outlined text-[14px] lg:text-[16px] fill-1">star</span>
+                                        <span class="text-text-subtle font-medium">4.7</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group flex flex-col gap-3 rounded-xl bg-surface-dark p-3 lg:p-4 shadow-md border border-white/5 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 cursor-pointer">
+                            <div class="relative aspect-[4/5] lg:aspect-[4/3] w-full overflow-hidden rounded-lg bg-gray-800">
+                                <div class="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDX5fpAk_Nq1G3v7oo0KuUtreqSltnmh5Xh2r5trHL2KpDJ96Mvhjsg9KybcuPWJ47tZFt6Fu4NQb3mpkpNMtTT1ZHxBKUnaCuRwUqIYLyLE48FSZIf2nrTLb7NmtWi3D-jsGt_rPKkecmx3I1b3ncPjn989lRprcSvklN_n3yy8PGof35tbamqEYgCuqcst59UEZ8GUWRC3S6e8d_sqzsJPKkTOnucFSGNbBolN8lIZuolFKsj2n3CFEv1dVHUa8p0ay3nMUaMNzw');"></div>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold leading-tight line-clamp-1 lg:text-lg">Americano Đá</h4>
+                                <p class="text-text-subtle text-xs lg:text-sm mt-1">Năng lượng tức thì</p>
+                                <div class="mt-2 flex items-center justify-between">
+                                    <span class="text-white font-bold lg:text-lg">55.000₫</span>
+                                    <div class="flex items-center gap-0.5 text-yellow-500 text-[10px] lg:text-xs">
+                                        <span class="material-symbols-outlined text-[14px] lg:text-[16px] fill-1">star</span>
+                                        <span class="text-text-subtle font-medium">4.4</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8 relative overflow-hidden rounded-2xl bg-[#393028] h-40 flex items-center shadow-lg group">
+                        <div class="absolute inset-0 bg-cover bg-center opacity-60 transition-transform duration-1000 group-hover:scale-105" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCvcPzHYTajnTJe1L_q1gpGL1NIk-O66NbAB9Dq_ED4sRJ1RwNVNP0wCt5OATFQABrGAqoO8BqgYAQ9luVJA5oDnYiwEw6eXt1dkbJWtEI76xtbML8Gi2E93usOluLWoBW-cuTyWoB87YrpnHzZh1qauNzsjHNybJhqFE-gpLzY7q2bFDw1M1Fv0SCdrUI5xKUODnMyzg7pmDPpux6sssayJmsojcsByEdFBhPT-OxPuY0ysDVPJzPLp2go-Xg_yfmfjqWYEOp6NOA');"></div>
+                        <div class="absolute inset-0 bg-gradient-to-r from-black/95 via-black/50 to-transparent"></div>
+                        <div class="relative z-10 px-6 py-4 w-full max-w-[70%]">
+                            <span class="text-primary font-bold text-xs uppercase tracking-widest mb-1 block">Không gian mới</span>
+                            <h3 class="text-xl font-bold text-white mb-2 leading-tight">Thư giãn cuối tuần <br/>tại NITROZ Garden</h3>
+                            <button class="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 text-white text-xs font-bold px-4 py-2 rounded-lg transition-all flex items-center gap-2 w-fit">
+                            Đặt bàn ngay <span class="material-symbols-outlined text-[16px]">calendar_month</span>
+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-content" id="content-nitro">
+                    <div class="flex items-center justify-between px-0 pt-2 mb-4">
+                        <h3 class="text-xl lg:text-2xl font-bold text-white">Cà phê Nitro</h3>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 px-0">
+                        <div class="group flex flex-col gap-3 rounded-xl bg-surface-dark p-3 lg:p-4 shadow-md border border-white/5 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 cursor-pointer">
+                            <div class="relative aspect-[4/5] lg:aspect-[4/3] w-full overflow-hidden rounded-lg bg-gray-800">
+                                <div class="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDX5fpAk_Nq1G3v7oo0KuUtreqSltnmh5Xh2r5trHL2KpDJ96Mvhjsg9KybcuPWJ47tZFt6Fu4NQb3mpkpNMtTT1ZHxBKUnaCuRwUqIYLyLE48FSZIf2nrTLb7NmtWi3D-jsGt_rPKkecmx3I1b3ncPjn989lRprcSvklN_n3yy8PGof35tbamqEYgCuqcst59UEZ8GUWRC3S6e8d_sqzsJPKkTOnucFSGNbBolN8lIZuolFKsj2n3CFEv1dVHUa8p0ay3nMUaMNzw');"></div>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold leading-tight line-clamp-1 lg:text-lg">Nitro Original</h4>
+                                <p class="text-text-subtle text-xs lg:text-sm mt-1">Đậm đà nguyên bản</p>
+                                <div class="mt-2 flex items-center justify-between">
+                                    <span class="text-white font-bold lg:text-lg">85.000₫</span>
+                                    <div class="flex items-center gap-0.5 text-yellow-500 text-[10px] lg:text-xs">
+                                        <span class="material-symbols-outlined text-[14px] lg:text-[16px] fill-1">star</span>
+                                        <span class="text-text-subtle font-medium">4.9</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group flex flex-col gap-3 rounded-xl bg-surface-dark p-3 lg:p-4 shadow-md border border-white/5 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 cursor-pointer">
+                            <div class="relative aspect-[4/5] lg:aspect-[4/3] w-full overflow-hidden rounded-lg bg-gray-800">
+                                <img src="./hình ảnh/Espresso.jpg" class="w-full aspect-[4/3] object-cover rounded-xl mb-3" alt="Bạc Xỉu"> </div>
+                            <div>
+                                <h4 class="text-white font-bold leading-tight line-clamp-1 lg:text-lg">Bạc Xỉu</h4>
+                                <p class="text-text-subtle text-xs lg:text-sm mt-1">Ngọt ngào vị sữa, nhẹ vương mùi phê.</p>
+                                <div class="mt-2 flex items-center justify-between">
+                                    <span class="text-white font-bold lg:text-lg">89.000₫</span>
+                                    <div class="flex items-center gap-0.5 text-yellow-500 text-[10px] lg:text-xs">
+                                        <span class="material-symbols-outlined text-[14px] lg:text-[16px] fill-1">star</span>
+                                        <span class="text-text-subtle font-medium">4.7</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group flex flex-col gap-3 rounded-xl bg-surface-dark p-3 lg:p-4 shadow-md border border-white/5 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 cursor-pointer">
+                            <div class="relative aspect-[4/5] lg:aspect-[4/3] w-full overflow-hidden rounded-lg bg-gray-800">
+                                <img src="./hình ảnh/cafe-trung-2.webp" class="w-full aspect-[4/3] object-cover rounded-xl mb-3" alt="Cà Phê Kem Muối"> </div>
+                            <div>
+                                <h4 class="text-white font-bold leading-tight line-clamp-1 lg:text-lg">Cà Phê Kem Muối</h4>
+                                <p class="text-text-subtle text-xs lg:text-sm mt-1">Béo mặn vấn vương, vị nguyên bản.</p>
+                                <div class="mt-2 flex items-center justify-between">
+                                    <span class="text-white font-bold lg:text-lg">95.000₫</span>
+                                    <div class="flex items-center gap-0.5 text-yellow-500 text-[10px] lg:text-xs">
+                                        <span class="material-symbols-outlined text-[14px] lg:text-[16px] fill-1">star</span>
+                                        <span class="text-text-subtle font-medium">4.8</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group flex flex-col gap-3 rounded-xl bg-surface-dark p-3 lg:p-4 shadow-md border border-white/5 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 cursor-pointer">
+                            <div class="relative aspect-[4/5] lg:aspect-[4/3] w-full overflow-hidden rounded-lg bg-gray-800">
+                                <img src="./hình ảnh/cafe-trung-2.webp" class="w-full aspect-[4/3] object-cover rounded-xl mb-3" alt="Cà Phê Trứng"> </div>
+                            <div>
+                                <h4 class="text-white font-bold leading-tight line-clamp-1 lg:text-lg">Cà Phê Trứng</h4>
+                                <p class="text-text-subtle text-xs lg:text-sm mt-1">Sánh mịn béo ngậy, nồng nàn truyền thống.</p>
+                                <div class="mt-2 flex items-center justify-between">
+                                    <span class="text-white font-bold lg:text-lg">89.000₫</span>
+                                    <div class="flex items-center gap-0.5 text-yellow-500 text-[10px] lg:text-xs">
+                                        <span class="material-symbols-outlined text-[14px] lg:text-[16px] fill-1">star</span>
+                                        <span class="text-text-subtle font-medium">4.6</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group flex flex-col gap-3 rounded-xl bg-surface-dark p-3 lg:p-4 shadow-md border border-white/5 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 cursor-pointer">
+                            <div class="relative aspect-[4/5] lg:aspect-[4/3] w-full overflow-hidden rounded-lg bg-gray-800">
+                                <img src="./hình ảnh/cach-lam-cafe-cot-dua.png" class="w-full aspect-[4/3] object-cover rounded-xl mb-3" alt="Cà Phê Cốt Dừa"> </div>
+                            <div>
+                                <h4 class="text-white font-bold leading-tight line-clamp-1 lg:text-lg">Cà Phê Cốt Dừa</h4>
+                                <p class="text-text-subtle text-xs lg:text-sm mt-1">Tuyết tan mát lạnh, thơm hương dừa nhẹ.</p>
+                                <div class="mt-2 flex items-center justify-between">
+                                    <span class="text-white font-bold lg:text-lg">52.000₫</span>
+                                    <div class="flex items-center gap-0.5 text-yellow-500 text-[10px] lg:text-xs">
+                                        <span class="material-symbols-outlined text-[14px] lg:text-[16px] fill-1">star</span>
+                                        <span class="text-text-subtle font-medium">4.7</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group flex flex-col gap-3 rounded-xl bg-surface-dark p-3 lg:p-4 shadow-md border border-white/5 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 cursor-pointer">
+                            <div class="relative aspect-[4/5] lg:aspect-[4/3] w-full overflow-hidden rounded-lg bg-gray-800">
+                                <div class="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCh2DRnbMqF84IyltV5V37Aetfj4Qs0a2gGLBOe45dyIVhdiZ3QpTWFmM-w6x_fk3QCkXdBM9j3X8S90WiEKLdFImGTECjeEacEIpBsIeI7V60r4M_nc279AaK8JwqjIcGhCwSAQ_eol5NL8r3aAUxCMzw9W5wW-wGz5D8P6yPmK8FVAjACJNqe3fuND_Uo662xtBYUFM2eu2VFDXlZBGsmI7qEBfBFv3X7gklzX1uDktVn0ns8yZ_Z_ItotoC74wt0aFo_SN2SaFU');"></div>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold leading-tight line-clamp-1 lg:text-lg">Espresso Cam Tonic</h4>
+                                <p class="text-text-subtle text-xs lg:text-sm mt-1">Hương trái cây rừng</p>
+                                <div class="mt-2 flex items-center justify-between">
+                                    <span class="text-white font-bold lg:text-lg">79.000₫</span>
+                                    <div class="flex items-center gap-0.5 text-yellow-500 text-[10px] lg:text-xs">
+                                        <span class="material-symbols-outlined text-[14px] lg:text-[16px] fill-1">star</span>
+                                        <span class="text-text-subtle font-medium">4.8</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group flex flex-col gap-3 rounded-xl bg-surface-dark p-3 lg:p-4 shadow-md border border-white/5 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 cursor-pointer">
+                            <div class="relative aspect-[4/5] lg:aspect-[4/3] w-full overflow-hidden rounded-lg bg-gray-800">
+                                <img src="./hình ảnh/cold-brew-dau-tay_3f27b1b5dfda4122b69bca11000fdff7_grande.jpg" class="w-full aspect-[4/3] object-cover rounded-xl mb-3" alt="Cold Brew Dâu Tươi"> </div>
+                            <div>
+                                <h4 class="text-white font-bold leading-tight line-clamp-1 lg:text-lg">Cold Brew Dâu Tươi</h4>
+                                <p class="text-text-subtle text-xs lg:text-sm mt-1">Hương trái cây rừng, ngọt dịu tự nhiên.</p>
+                                <div class="mt-2 flex items-center justify-between">
+                                    <span class="text-white font-bold lg:text-lg">65.000₫</span>
+                                    <div class="flex items-center gap-0.5 text-yellow-500 text-[10px] lg:text-xs">
+                                        <span class="material-symbols-outlined text-[14px] lg:text-[16px] fill-1">star</span>
+                                        <span class="text-text-subtle font-medium">4.9</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group flex flex-col gap-3 rounded-xl bg-surface-dark p-3 lg:p-4 shadow-md border border-white/5 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 cursor-pointer">
+                            <div class="relative aspect-[4/5] lg:aspect-[4/3] w-full overflow-hidden rounded-lg bg-gray-800">
+                                <img src="./hình ảnh/cach-pha-ca-phe-sua-tuoi-cho-ngay-lam-viec-nang-suat-1.jpg" class="w-full aspect-[4/3] object-cover rounded-xl mb-3" alt="Cà Phê sữa"> </div>
+                            <div>
+                                <h4 class="text-white font-bold leading-tight line-clamp-1 lg:text-lg">Cà Phê sữa</h4>
+                                <p class="text-text-subtle text-xs lg:text-sm mt-1">Thơm ấm gia vị, độc đáo tinh tế.</p>
+                                <div class="mt-2 flex items-center justify-between">
+                                    <span class="text-white font-bold lg:text-lg">30.000₫</span>
+                                    <div class="flex items-center gap-0.5 text-yellow-500 text-[10px] lg:text-xs">
+                                        <span class="material-symbols-outlined text-[14px] lg:text-[16px] fill-1">star</span>
+                                        <span class="text-text-subtle font-medium">4.5</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-content" id="content-juice">
+                    <div class="flex items-center justify-between px-0 pt-2 mb-4">
+                        <h3 class="text-xl lg:text-2xl font-bold text-white">Nước Ép &amp; Trà</h3>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 px-0">
+                        <div class="group flex flex-col gap-3 rounded-xl bg-surface-dark p-3 lg:p-4 shadow-md border border-white/5 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 cursor-pointer">
+                            <div class="relative aspect-[4/5] lg:aspect-[4/3] w-full overflow-hidden rounded-lg bg-gray-800">
+                                <div class="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCh2DRnbMqF84IyltV5V37Aetfj4Qs0a2gGLBOe45dyIVhdiZ3QpTWFmM-w6x_fk3QCkXdBM9j3X8S90WiEKLdFImGTECjeEacEIpBsIeI7V60r4M_nc279AaK8JwqjIcGhCwSAQ_eol5NL8r3aAUxCMzw9W5wW-wGz5D8P6yPmK8FVAjACJNqe3fuND_Uo662xtBYUFM2eu2VFDXlZBGsmI7qEBfBFv3X7gklzX1uDktVn0ns8yZ_Z_ItotoC74wt0aFo_SN2SaFU');"></div>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold leading-tight line-clamp-1 lg:text-lg">Trà Đào Cam Sả</h4>
+                                <p class="text-text-subtle text-xs lg:text-sm mt-1">Thanh nhiệt cơ thể</p>
+                                <div class="mt-2 flex items-center justify-between">
+                                    <span class="text-white font-bold lg:text-lg">69.000₫</span>
+                                    <div class="flex items-center gap-0.5 text-yellow-500 text-[10px] lg:text-xs">
+                                        <span class="material-symbols-outlined text-[14px] lg:text-[16px] fill-1">star</span>
+                                        <span class="text-text-subtle font-medium">4.7</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group flex flex-col gap-3 rounded-xl bg-surface-dark p-3 lg:p-4 shadow-md border border-white/5 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 cursor-pointer">
+                            <div class="relative aspect-[4/5] lg:aspect-[4/3] w-full overflow-hidden rounded-lg bg-gray-800">
+                                <div class="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCh2DRnbMqF84IyltV5V37Aetfj4Qs0a2gGLBOe45dyIVhdiZ3QpTWFmM-w6x_fk3QCkXdBM9j3X8S90WiEKLdFImGTECjeEacEIpBsIeI7V60r4M_nc279AaK8JwqjIcGhCwSAQ_eol5NL8r3aAUxCMzw9W5wW-wGz5D8P6yPmK8FVAjACJNqe3fuND_Uo662xtBYUFM2eu2VFDXlZBGsmI7qEBfBFv3X7gklzX1uDktVn0ns8yZ_Z_ItotoC74wt0aFo_SN2SaFU');"></div>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold leading-tight line-clamp-1 lg:text-lg">Trà Vải Hoa Hồng</h4>
+                                <p class="text-text-subtle text-xs lg:text-sm mt-1">Hương hoa thơm ngát</p>
+                                <div class="mt-2 flex items-center justify-between">
+                                    <span class="text-white font-bold lg:text-lg">75.000₫</span>
+                                    <div class="flex items-center gap-0.5 text-yellow-500 text-[10px] lg:text-xs">
+                                        <span class="material-symbols-outlined text-[14px] lg:text-[16px] fill-1">star</span>
+                                        <span class="text-text-subtle font-medium">4.8</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group flex flex-col gap-3 rounded-xl bg-surface-dark p-3 lg:p-4 shadow-md border border-white/5 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 cursor-pointer">
+                            <div class="relative aspect-[4/5] lg:aspect-[4/3] w-full overflow-hidden rounded-lg bg-gray-800">
+                                <div class="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCh2DRnbMqF84IyltV5V37Aetfj4Qs0a2gGLBOe45dyIVhdiZ3QpTWFmM-w6x_fk3QCkXdBM9j3X8S90WiEKLdFImGTECjeEacEIpBsIeI7V60r4M_nc279AaK8JwqjIcGhCwSAQ_eol5NL8r3aAUxCMzw9W5wW-wGz5D8P6yPmK8FVAjACJNqe3fuND_Uo662xtBYUFM2eu2VFDXlZBGsmI7qEBfBFv3X7gklzX1uDktVn0ns8yZ_Z_ItotoC74wt0aFo_SN2SaFU');"></div>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold leading-tight line-clamp-1 lg:text-lg">Trà Ổi Hồng</h4>
+                                <p class="text-text-subtle text-xs lg:text-sm mt-1">Giòn ngọt tự nhiên</p>
+                                <div class="mt-2 flex items-center justify-between">
+                                    <span class="text-white font-bold lg:text-lg">65.000₫</span>
+                                    <div class="flex items-center gap-0.5 text-yellow-500 text-[10px] lg:text-xs">
+                                        <span class="material-symbols-outlined text-[14px] lg:text-[16px] fill-1">star</span>
+                                        <span class="text-text-subtle font-medium">4.6</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group flex flex-col gap-3 rounded-xl bg-surface-dark p-3 lg:p-4 shadow-md border border-white/5 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 cursor-pointer">
+                            <div class="relative aspect-[4/5] lg:aspect-[4/3] w-full overflow-hidden rounded-lg bg-gray-800">
+                                <div class="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCh2DRnbMqF84IyltV5V37Aetfj4Qs0a2gGLBOe45dyIVhdiZ3QpTWFmM-w6x_fk3QCkXdBM9j3X8S90WiEKLdFImGTECjeEacEIpBsIeI7V60r4M_nc279AaK8JwqjIcGhCwSAQ_eol5NL8r3aAUxCMzw9W5wW-wGz5D8P6yPmK8FVAjACJNqe3fuND_Uo662xtBYUFM2eu2VFDXlZBGsmI7qEBfBFv3X7gklzX1uDktVn0ns8yZ_Z_ItotoC74wt0aFo_SN2SaFU');"></div>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold leading-tight line-clamp-1 lg:text-lg">Nước Ép Dưa Hấu</h4>
+                                <p class="text-text-subtle text-xs lg:text-sm mt-1">100% Nguyên chất</p>
+                                <div class="mt-2 flex items-center justify-between">
+                                    <span class="text-white font-bold lg:text-lg">55.000₫</span>
+                                    <div class="flex items-center gap-0.5 text-yellow-500 text-[10px] lg:text-xs">
+                                        <span class="material-symbols-outlined text-[14px] lg:text-[16px] fill-1">star</span>
+                                        <span class="text-text-subtle font-medium">4.9</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group flex flex-col gap-3 rounded-xl bg-surface-dark p-3 lg:p-4 shadow-md border border-white/5 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 cursor-pointer">
+                            <div class="relative aspect-[4/5] lg:aspect-[4/3] w-full overflow-hidden rounded-lg bg-gray-800">
+                                <div class="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCh2DRnbMqF84IyltV5V37Aetfj4Qs0a2gGLBOe45dyIVhdiZ3QpTWFmM-w6x_fk3QCkXdBM9j3X8S90WiEKLdFImGTECjeEacEIpBsIeI7V60r4M_nc279AaK8JwqjIcGhCwSAQ_eol5NL8r3aAUxCMzw9W5wW-wGz5D8P6yPmK8FVAjACJNqe3fuND_Uo662xtBYUFM2eu2VFDXlZBGsmI7qEBfBFv3X7gklzX1uDktVn0ns8yZ_Z_ItotoC74wt0aFo_SN2SaFU');"></div>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold leading-tight line-clamp-1 lg:text-lg">Trà Nhài Sữa</h4>
+                                <p class="text-text-subtle text-xs lg:text-sm mt-1">Béo ngậy hương nhài</p>
+                                <div class="mt-2 flex items-center justify-between">
+                                    <span class="text-white font-bold lg:text-lg">60.000₫</span>
+                                    <div class="flex items-center gap-0.5 text-yellow-500 text-[10px] lg:text-xs">
+                                        <span class="material-symbols-outlined text-[14px] lg:text-[16px] fill-1">star</span>
+                                        <span class="text-text-subtle font-medium">4.8</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group flex flex-col gap-3 rounded-xl bg-surface-dark p-3 lg:p-4 shadow-md border border-white/5 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 cursor-pointer">
+                            <div class="relative aspect-[4/5] lg:aspect-[4/3] w-full overflow-hidden rounded-lg bg-gray-800">
+                                <div class="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCh2DRnbMqF84IyltV5V37Aetfj4Qs0a2gGLBOe45dyIVhdiZ3QpTWFmM-w6x_fk3QCkXdBM9j3X8S90WiEKLdFImGTECjeEacEIpBsIeI7V60r4M_nc279AaK8JwqjIcGhCwSAQ_eol5NL8r3aAUxCMzw9W5wW-wGz5D8P6yPmK8FVAjACJNqe3fuND_Uo662xtBYUFM2eu2VFDXlZBGsmI7qEBfBFv3X7gklzX1uDktVn0ns8yZ_Z_ItotoC74wt0aFo_SN2SaFU');"></div>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold leading-tight line-clamp-1 lg:text-lg">Nước Ép Thơm</h4>
+                                <p class="text-text-subtle text-xs lg:text-sm mt-1">Chua ngọt đậm đà</p>
+                                <div class="mt-2 flex items-center justify-between">
+                                    <span class="text-white font-bold lg:text-lg">55.000₫</span>
+                                    <div class="flex items-center gap-0.5 text-yellow-500 text-[10px] lg:text-xs">
+                                        <span class="material-symbols-outlined text-[14px] lg:text-[16px] fill-1">star</span>
+                                        <span class="text-text-subtle font-medium">4.5</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group flex flex-col gap-3 rounded-xl bg-surface-dark p-3 lg:p-4 shadow-md border border-white/5 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 cursor-pointer">
+                            <div class="relative aspect-[4/5] lg:aspect-[4/3] w-full overflow-hidden rounded-lg bg-gray-800">
+                                <div class="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCh2DRnbMqF84IyltV5V37Aetfj4Qs0a2gGLBOe45dyIVhdiZ3QpTWFmM-w6x_fk3QCkXdBM9j3X8S90WiEKLdFImGTECjeEacEIpBsIeI7V60r4M_nc279AaK8JwqjIcGhCwSAQ_eol5NL8r3aAUxCMzw9W5wW-wGz5D8P6yPmK8FVAjACJNqe3fuND_Uo662xtBYUFM2eu2VFDXlZBGsmI7qEBfBFv3X7gklzX1uDktVn0ns8yZ_Z_ItotoC74wt0aFo_SN2SaFU');"></div>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold leading-tight line-clamp-1 lg:text-lg">Trà Xoài Macchiato</h4>
+                                <p class="text-text-subtle text-xs lg:text-sm mt-1">Lớp kem cheese mặn</p>
+                                <div class="mt-2 flex items-center justify-between">
+                                    <span class="text-white font-bold lg:text-lg">75.000₫</span>
+                                    <div class="flex items-center gap-0.5 text-yellow-500 text-[10px] lg:text-xs">
+                                        <span class="material-symbols-outlined text-[14px] lg:text-[16px] fill-1">star</span>
+                                        <span class="text-text-subtle font-medium">4.7</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-content" id="content-cake">
+                    <div class="flex items-center justify-between px-0 pt-2 mb-4">
+                        <h3 class="text-xl lg:text-2xl font-bold text-white">Bánh Ngọt</h3>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 px-0">
+                        <div class="group flex flex-col gap-3 rounded-xl bg-surface-dark p-3 lg:p-4 shadow-md border border-white/5 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 cursor-pointer">
+                            <div class="relative aspect-[4/5] lg:aspect-[4/3] w-full overflow-hidden rounded-lg bg-gray-800">
+                                <img src="./hình ảnh/4_8cd024e245614d3aa978a23a2663d395_grande.png" class="w-full aspect-[4/3] object-cover rounded-xl mb-3" alt="Bánh Sừng Bò Hạnh Nhâ"> </div>
+                            <div>
+                                <h4 class="text-white font-bold leading-tight line-clamp-1 lg:text-lg">Bánh Sừng Bò Hạnh Nhân</h4>
+                                <p class="text-text-subtle text-xs lg:text-sm mt-1">Thơm lừng mùi bơ</p>
+                                <div class="mt-2 flex items-center justify-between">
+                                    <span class="text-white font-bold lg:text-lg">85.000₫</span>
+                                    <div class="flex items-center gap-0.5 text-yellow-500 text-[10px] lg:text-xs">
+                                        <span class="material-symbols-outlined text-[14px] lg:text-[16px] fill-1">star</span>
+                                        <span class="text-text-subtle font-medium">4.9</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group flex flex-col gap-3 rounded-xl bg-surface-dark p-3 lg:p-4 shadow-md border border-white/5 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 cursor-pointer">
+                            <div class="relative aspect-[4/5] lg:aspect-[4/3] w-full overflow-hidden rounded-lg bg-gray-800">
+                                <img src="./hình ảnh/0400231440000.jpg.webp" class="w-full aspect-[4/3] object-cover rounded-xl mb-3" alt="Pain au Chocolat"> </div>
+                            <div>
+                                <h4 class="text-white font-bold leading-tight line-clamp-1 lg:text-lg">Pain au Chocolat</h4>
+                                <p class="text-text-subtle text-xs lg:text-sm mt-1">Nhân sô cô la chảy</p>
+                                <div class="mt-2 flex items-center justify-between">
+                                    <span class="text-white font-bold lg:text-lg">89.000₫</span>
+                                    <div class="flex items-center gap-0.5 text-yellow-500 text-[10px] lg:text-xs">
+                                        <span class="material-symbols-outlined text-[14px] lg:text-[16px] fill-1">star</span>
+                                        <span class="text-text-subtle font-medium">4.8</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group flex flex-col gap-3 rounded-xl bg-surface-dark p-3 lg:p-4 shadow-md border border-white/5 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 cursor-pointer">
+                            <div class="relative aspect-[4/5] lg:aspect-[4/3] w-full overflow-hidden rounded-lg bg-gray-800">
+                                <img src="./hình ảnh/cach-lam-banh-sung-trau-croissant-trung-muoi-thom-ngon-beo-avt-1200x676.jpg" class="w-full aspect-[4/3] object-cover rounded-xl mb-3" alt="Croissant Trứng Muối"> </div>
+                            <div>
+                                <h4 class="text-white font-bold leading-tight line-clamp-1 lg:text-lg">Croissant Trứng Muối</h4>
+                                <p class="text-text-subtle text-xs lg:text-sm mt-1">Sốt trứng muối đặc biệt</p>
+                                <div class="mt-2 flex items-center justify-between">
+                                    <span class="text-white font-bold lg:text-lg">95.000₫</span>
+                                    <div class="flex items-center gap-0.5 text-yellow-500 text-[10px] lg:text-xs">
+                                        <span class="material-symbols-outlined text-[14px] lg:text-[16px] fill-1">star</span>
+                                        <span class="text-text-subtle font-medium">4.7</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group flex flex-col gap-3 rounded-xl bg-surface-dark p-3 lg:p-4 shadow-md border border-white/5 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 cursor-pointer">
+                            <div class="relative aspect-[4/5] lg:aspect-[4/3] w-full overflow-hidden rounded-lg bg-gray-800">
+                                <img src="./hình ảnh/nhocuon.jpg" class="w-full aspect-[4/3] object-cover rounded-xl mb-3" alt="Danish Nho Tươi"> </div>
+                            <div>
+                                <h4 class="text-white font-bold leading-tight line-clamp-1 lg:text-lg">Danish Nho Tươi</h4>
+                                <p class="text-text-subtle text-xs lg:text-sm mt-1">Trái cây tươi mát</p>
+                                <div class="mt-2 flex items-center justify-between">
+                                    <span class="text-white font-bold lg:text-lg">85.000₫</span>
+                                    <div class="flex items-center gap-0.5 text-yellow-500 text-[10px] lg:text-xs">
+                                        <span class="material-symbols-outlined text-[14px] lg:text-[16px] fill-1">star</span>
+                                        <span class="text-text-subtle font-medium">4.6</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group flex flex-col gap-3 rounded-xl bg-surface-dark p-3 lg:p-4 shadow-md border border-white/5 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 cursor-pointer">
+                            <div class="relative aspect-[4/5] lg:aspect-[4/3] w-full overflow-hidden rounded-lg bg-gray-800">
+                                <img src="./hình ảnh/4-cach-lam-banh-chuoi-nuong-thom-beo-ngon-ngat-ngay-202203121320431927.jpg" class="w-full aspect-[4/3] object-cover rounded-xl mb-3" alt="Bánh Chuối Nướng"> </div>
+                            <div>
+                                <h4 class="text-white font-bold leading-tight line-clamp-1 lg:text-lg">Bánh Chuối Nướng</h4>
+                                <p class="text-text-subtle text-xs lg:text-sm mt-1">Mềm mịn ngọt ngào</p>
+                                <div class="mt-2 flex items-center justify-between">
+                                    <span class="text-white font-bold lg:text-lg">55.000₫</span>
+                                    <div class="flex items-center gap-0.5 text-yellow-500 text-[10px] lg:text-xs">
+                                        <span class="material-symbols-outlined text-[14px] lg:text-[16px] fill-1">star</span>
+                                        <span class="text-text-subtle font-medium">4.5</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group flex flex-col gap-3 rounded-xl bg-surface-dark p-3 lg:p-4 shadow-md border border-white/5 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 cursor-pointer">
+                            <div class="relative aspect-[4/5] lg:aspect-[4/3] w-full overflow-hidden rounded-lg bg-gray-800">
+                                <img src="./hình ảnh/maxresdefault.jpg" class="w-full aspect-[4/3] object-cover rounded-xl mb-3" alt="Tiramisu Box"> </div>
+                            <div>
+                                <h4 class="text-white font-bold leading-tight line-clamp-1 lg:text-lg">Tiramisu Box</h4>
+                                <p class="text-text-subtle text-xs lg:text-sm mt-1">Vị cà phê Ý</p>
+                                <div class="mt-2 flex items-center justify-between">
+                                    <span class="text-white font-bold lg:text-lg">110.000₫</span>
+                                    <div class="flex items-center gap-0.5 text-yellow-500 text-[10px] lg:text-xs">
+                                        <span class="material-symbols-outlined text-[14px] lg:text-[16px] fill-1">star</span>
+                                        <span class="text-text-subtle font-medium">4.9</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group flex flex-col gap-3 rounded-xl bg-surface-dark p-3 lg:p-4 shadow-md border border-white/5 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 cursor-pointer">
+                            <div class="relative aspect-[4/5] lg:aspect-[4/3] w-full overflow-hidden rounded-lg bg-gray-800">
+                                <img src="./hình ảnh/banh-quy-yen-mach-2.jpg" class="w-full aspect-[4/3] object-cover rounded-xl mb-3" alt="Cookie Yến Mạch"> </div>
+                            <div>
+                                <h4 class="text-white font-bold leading-tight line-clamp-1 lg:text-lg">Cookie Yến Mạch</h4>
+                                <p class="text-text-subtle text-xs lg:text-sm mt-1">Giòn rụm dinh dưỡng</p>
+                                <div class="mt-2 flex items-center justify-between">
+                                    <span class="text-white font-bold lg:text-lg">45.000₫</span>
+                                    <div class="flex items-center gap-0.5 text-yellow-500 text-[10px] lg:text-xs">
+                                        <span class="material-symbols-outlined text-[14px] lg:text-[16px] fill-1">star</span>
+                                        <span class="text-text-subtle font-medium">4.6</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pb-6 lg:pb-12">
+                <div class="relative overflow-hidden rounded-2xl bg-[#393028] lg:grid lg:grid-cols-2 lg:items-center border border-white/5 shadow-2xl">
+                    <div class="absolute right-0 top-0 h-full w-1/2 bg-cover bg-center opacity-40 lg:opacity-100 lg:static lg:h-80 lg:w-full lg:order-2" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCvcPzHYTajnTJe1L_q1gpGL1NIk-O66NbAB9Dq_ED4sRJ1RwNVNP0wCt5OATFQABrGAqoO8BqgYAQ9luVJA5oDnYiwEw6eXt1dkbJWtEI76xtbML8Gi2E93usOluLWoBW-cuTyWoB87YrpnHzZh1qauNzsjHNybJhqFE-gpLzY7q2bFDw1M1Fv0SCdrUI5xKUODnMyzg7pmDPpux6sssayJmsojcsByEdFBhPT-OxPuY0ysDVPJzPLp2go-Xg_yfmfjqWYEOp6NOA');"></div>
+                    <div class="absolute inset-0 bg-gradient-to-r from-surface-dark via-surface-dark/95 to-transparent lg:hidden"></div>
+                    <div class="relative z-10 flex flex-col items-start p-6 lg:p-12 lg:bg-[#393028] lg:h-full lg:justify-center">
+                        <span class="material-symbols-outlined text-primary text-[32px] mb-3 lg:mb-4">self_improvement</span>
+                        <h3 class="text-xl lg:text-3xl font-bold text-white mb-2 lg:mb-4">Góc Nhỏ Bình Yên</h3>
+                        <p class="text-text-subtle text-sm lg:text-base mb-4 lg:mb-6 max-w-[80%] lg:max-w-none leading-relaxed">Tìm về chốn an yên giữa lòng thành phố, nơi hương cà phê dẫn lối cảm xúc. Không chỉ là một tách cà phê, đó là khoảnh khắc thư giãn tuyệt đối.</p>
+                        <button class="text-primary text-sm lg:text-base font-bold flex items-center gap-1 hover:gap-2 transition-all group-hover:text-white">
+                            Khám phá Không gian
+                            <span class="material-symbols-outlined text-[16px] lg:text-[20px]">arrow_right_alt</span>
+</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <nav class="lg:hidden fixed bottom-0 z-50 w-full bg-surface-dark/95 backdrop-blur-lg border-t border-white/5 pb-safe shadow-[0_-5px_15px_rgba(0,0,0,0.3)]">
+            <div class="flex items-center justify-around pb-2 pt-3">
+                <button class="flex flex-col items-center gap-1 text-primary w-16">
+<span class="material-symbols-outlined fill-1">home</span>
+<span class="text-[10px] font-bold">Trang chủ</span>
+</button>
+                <button class="flex flex-col items-center gap-1 text-text-subtle hover:text-white transition-colors w-16 group">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">restaurant_menu</span>
+<span class="text-[10px] font-medium">Thực đơn</span>
+</button>
+                <div class="relative -top-6">
+                    <button class="flex h-14 w-14 items-center justify-center rounded-full bg-primary text-white shadow-lg shadow-primary/40 transition-transform active:scale-95 group">
+<span class="material-symbols-outlined text-[28px] group-active:rotate-90 transition-transform">qr_code_scanner</span>
+</button>
+                </div>
+                <button class="flex flex-col items-center gap-1 text-text-subtle hover:text-white transition-colors w-16 group">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">favorite</span>
+<span class="text-[10px] font-medium">Yêu thích</span>
+</button>
+                <button class="flex flex-col items-center gap-1 text-text-subtle hover:text-white transition-colors w-16 group">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">account_circle</span>
+<span class="text-[10px] font-medium">Hồ sơ</span>
+</button>
+            </div>
+            <div class="h-5 w-full"></div>
+        </nav>
+    </div>
+    <script src="./nitroz.js"></script>
+</body>
+
+</html>

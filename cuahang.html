@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html class="dark" lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Cửa hàng NITROZ Coffee</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f27f0d",
+                        "background-light": "#f8f7f5",
+                        "background-dark": "#181411",
+                        "card-dark": "#27211b",
+                        "border-dark": "#54473b",
+                        "text-muted": "#baab9c"
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        body {
+            min-height: max(884px, 100dvh);
+        }
+        
+        #cat-beans:checked~main #section-cups,
+        #cat-beans:checked~main #section-acc,
+        #cat-beans:checked~main #section-hero {
+            display: none !important;
+        }
+        
+        #cat-cups:checked~main #section-beans,
+        #cat-cups:checked~main #section-acc,
+        #cat-cups:checked~main #section-hero {
+            display: none !important;
+        }
+        
+        #cat-acc:checked~main #section-beans,
+        #cat-acc:checked~main #section-cups,
+        #cat-acc:checked~main #section-hero {
+            display: none !important;
+        }
+        
+        #cat-all:checked~main label[for="cat-all"],
+        #cat-beans:checked~main label[for="cat-beans"],
+        #cat-cups:checked~main label[for="cat-cups"],
+        #cat-acc:checked~main label[for="cat-acc"] {
+            background-color: #f27f0d;
+            color: #181411;
+            border-color: #f27f0d;
+            box-shadow: 0 10px 15px -3px rgba(242, 127, 13, 0.2);
+        }
+        
+        #del-item-1:checked~.cart-sidebar .cart-item-1,
+        #del-item-2:checked~.cart-sidebar .cart-item-2,
+        #del-item-3:checked~.cart-sidebar .cart-item-3 {
+            display: none;
+        }
+        
+        #pay-transfer:checked~.payment-wrapper .qr-section {
+            display: flex;
+        }
+        
+        #pay-transfer:checked~.payment-wrapper .cash-section {
+            display: none;
+        }
+        
+        #pay-cash:checked~.payment-wrapper .qr-section {
+            display: none;
+        }
+        
+        #pay-cash:checked~.payment-wrapper .cash-section {
+            display: block;
+        }
+        
+        #pay-cash:checked~.payment-selectors label[for="pay-cash"],
+        #pay-transfer:checked~.payment-selectors label[for="pay-transfer"] {
+            background-color: rgba(242, 127, 13, 0.1);
+            border-color: #f27f0d;
+            color: #f27f0d;
+        }
+        
+        #cart-toggle:checked~.cart-sidebar {
+            visibility: visible;
+        }
+        
+        #cart-toggle:checked~.cart-sidebar>div:last-child {
+            transform: translateX(0);
+        }
+        
+        #cart-toggle:checked~.cart-sidebar>label {
+            opacity: 1;
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display overflow-x-hidden antialiased min-h-screen flex flex-col relative">
+    <input class="peer/cart hidden" id="cart-toggle" type="checkbox" />
+    <input class="peer/checkout hidden" id="checkout-toggle" type="checkbox" />
+    <input class="hidden" id="del-item-1" type="checkbox" />
+    <input class="hidden" id="del-item-2" type="checkbox" />
+    <input class="hidden" id="del-item-3" type="checkbox" />
+    <input checked="" class="peer/all hidden" id="cat-all" name="cat" type="radio" />
+    <input class="peer/beans hidden" id="cat-beans" name="cat" type="radio" />
+    <input class="peer/cups hidden" id="cat-cups" name="cat" type="radio" />
+    <input class="peer/acc hidden" id="cat-acc" name="cat" type="radio" />
+    <div class="cart-sidebar fixed inset-0 z-[100] invisible transition-all duration-300">
+        <label class="absolute inset-0 bg-black/60 backdrop-blur-sm opacity-0 transition-opacity duration-300 cursor-pointer" for="cart-toggle"></label>
+        <div class="absolute right-0 top-0 h-full w-full sm:w-[450px] bg-[#1d1916] border-l border-border-dark shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col">
+            <div class="p-6 border-b border-white/10 flex items-center justify-between bg-[#181411]">
+                <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary">shopping_bag</span> Giỏ hàng <span class="bg-primary text-[#181411] text-xs px-2 py-0.5 rounded-full ml-1">3</span>
+                </h2>
+                <label class="p-2 hover:bg-white/10 rounded-full cursor-pointer text-text-muted hover:text-white transition-colors" for="cart-toggle">
+<span class="material-symbols-outlined">close</span>
+</label>
+            </div>
+            <div class="flex-1 overflow-y-auto p-6 space-y-6">
+
+            </div>
+            <div class="p-6 bg-[#181411] border-t border-white/10 shadow-[0_-10px_40px_rgba(0,0,0,0.5)] z-10">
+                <div class="space-y-3 mb-6">
+                    <div class="flex justify-between items-center text-sm">
+
+
+
+                    </div>
+
+
+                </div>
+                <div class="h-px bg-white/10 my-2"></div>
+                <div class="flex justify-between items-center mb-4 text-sm">
+                    <span class="text-text-muted">Tổng thanh toán:</span>
+                    <p id="side-total" class="text-primary text-2xl font-bold">0đ</p>
+                </div>
+            </div>
+            <label class="flex items-center justify-center gap-2 w-full bg-primary hover:bg-primary/90 text-[#181411] text-center font-bold py-4 rounded-xl cursor-pointer transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-primary/20" for="checkout-toggle">
+<span>Thanh toán ngay</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</label>
+            <label class="block text-center text-text-muted hover:text-white text-sm mt-4 cursor-pointer hover:underline" for="cart-toggle">
+                    Tiếp tục mua sắm
+                </label>
+        </div>
+    </div>
+    </div>
+    <div class="fixed inset-0 z-[110] hidden peer-checked/checkout:flex items-center justify-center p-4">
+        <label class="absolute inset-0 bg-black/90 backdrop-blur-md animate-fade-in" for="checkout-toggle"></label>
+        <div class="relative w-full max-w-lg bg-[#181411] border border-border-dark rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+            <div class="p-5 border-b border-border-dark flex justify-between items-center bg-[#1d1916]">
+                <h3 class="text-white text-lg font-bold flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary">credit_card</span> Thanh toán
+                </h3>
+                <label class="text-text-muted hover:text-white cursor-pointer p-1 hover:bg-white/10 rounded-full transition-colors" for="checkout-toggle">
+<span class="material-symbols-outlined">close</span>
+</label>
+            </div>
+            <div class="p-6 overflow-y-auto">
+                <h4 class="text-text-muted text-xs font-bold uppercase tracking-wider mb-3">Phương thức thanh toán</h4>
+                <input checked="" class="hidden" id="pay-cash" name="payment" type="radio" />
+                <input class="hidden" id="pay-transfer" name="payment" type="radio" />
+                <div class="payment-selectors grid grid-cols-2 gap-4 mb-6">
+                    <label class="flex flex-col items-center justify-center gap-2 h-24 rounded-xl border border-border-dark bg-card-dark hover:bg-white/5 cursor-pointer transition-all" for="pay-cash">
+<span class="material-symbols-outlined text-3xl">payments</span>
+<span class="font-bold text-sm">Tiền mặt</span>
+</label>
+                    <label class="flex flex-col items-center justify-center gap-2 h-24 rounded-xl border border-border-dark bg-card-dark hover:bg-white/5 cursor-pointer transition-all" for="pay-transfer">
+<span class="material-symbols-outlined text-3xl">qr_code_2</span>
+<span class="font-bold text-sm">Chuyển khoản</span>
+</label>
+                </div>
+                <div class="payment-wrapper min-h-[220px] bg-card-dark/50 rounded-xl p-6 border border-border-dark border-dashed">
+                    <div class="cash-section text-center animate-in fade-in duration-300">
+                        <div class="w-16 h-16 bg-green-500/10 text-green-500 rounded-full flex items-center justify-center mx-auto mb-4 border border-green-500/20">
+                            <span class="material-symbols-outlined text-3xl">check</span>
+                        </div>
+                        <h4 class="text-white font-bold text-lg mb-2">Thanh toán khi nhận hàng (COD)</h4>
+                        <p class="text-text-muted text-sm mb-6 max-w-xs mx-auto">Bạn sẽ thanh toán trực tiếp cho shipper khi nhận được hàng. Đơn hàng sẽ được xác nhận qua điện thoại.</p>
+                    </div>
+                    <div class="qr-section hidden flex-col items-center animate-in fade-in zoom-in duration-300 text-center">
+                        <div class="bg-white p-2 rounded-lg mb-4 shadow-lg shadow-white/5">
+                            <div class="w-32 h-32 bg-white flex flex-wrap content-start relative">
+                                <span class="absolute inset-0 flex items-center justify-center text-black font-bold text-xs opacity-20">SAMPLE QR</span>
+                                <svg class="w-full h-full text-[#181411]" viewBox="0 0 100 100">
+<path d="M0,0 h40 v40 h-40 z M10,10 h20 v20 h-20 z M5,5 v30 h30 v-30 z M60,0 h40 v40 h-40 z M70,10 h20 v20 h-20 z M65,5 v30 h30 v-30 z M0,60 h40 v40 h-40 z M10,70 h20 v20 h-20 z M5,65 v30 h30 v-30 z M50,50 h10 v10 h-10 z M60,50 h10 v10 h-10 z M80,50 h10 v10 h-10 z M50,60 h10 v10 h-10 z M70,60 h10 v10 h-10 z M50,80 h10 v10 h-10 z M80,80 h10 v10 h-10 z" fill="currentColor"></path>
+</svg>
+                            </div>
+                        </div>
+                        <p class="text-primary font-bold text-lg mb-0.5">NITROZ COFFEE VN</p>
+                        <p class="text-white font-mono text-sm mb-3">1900 888 888 (Techcombank)</p>
+                        <p class="text-text-muted text-xs">
+                            Nội dung CK: <span class="text-white font-bold bg-white/10 px-1 rounded">NITROZ CẢM ƠN</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="p-5 border-t border-border-dark bg-[#1d1916]">
+                <div class="flex justify-between items-center mb-4 text-sm">
+                    <span class="text-text-muted">Tổng thanh toán:</span>
+
+                    <span id="checkout-total" class="text-white font-bold text-lg">0đ</span>
+                </div>
+                <button class="w-full bg-primary hover:bg-primary/90 text-[#181411] font-bold py-3.5 rounded-xl transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">lock</span>
+                    Hoàn tất đơn hàng
+                </button>
+            </div>
+        </div>
+    </div>
+    <header class="sticky top-0 z-50 bg-[#181411]/95 backdrop-blur-md border-b border-[#393028]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-orange-600 flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-primary/20">N</div>
+                    <h1 class="text-white text-2xl font-extrabold tracking-tight">NITROZ</h1>
+                </div>
+                <nav class="hidden lg:flex items-center gap-8">
+                    <a class="hover:text-primary font-medium transition-colors" href="nitroz.html">Trang chủ</a>
+                    <a class="hover:text-primary font-medium transition-colors" href="thucdon.html">Thực đơn</a>
+                    <a class="hover:text-primary font-medium transition-colors" href="vechungtoi.html">Về chúng tôi</a>
+                    <a class="hover:text-primary font-medium transition-colors" href="cuahang.html">Cửa hàng</a>
+                    <a class="hover:text-primary font-medium transition-colors" href="khuyenmai.html">Khuyến mãi</a>
+                    <a class="hover:text-primary font-medium transition-colors" href="tuyendung.html">Tuyển dụng</a>
+                </nav>
+                <div class="flex items-center gap-4">
+                    <button class="text-white hover:text-primary transition-colors p-2 rounded-full">
+<span class="material-symbols-outlined">search</span>
+</button>
+                    <label class="text-white hover:text-primary transition-colors p-2 rounded-full relative group cursor-pointer" for="cart-toggle">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="absolute top-1 right-1 h-2 w-2 rounded-full bg-primary animate-pulse"></span>
+</label>
+                    <button class="hidden md:flex bg-white/10 hover:bg-white/20 text-white items-center gap-2 px-4 py-2 rounded-full transition-colors">
+<span class="material-symbols-outlined text-[20px]">person</span>
+<span class="text-sm font-bold">Đăng nhập</span>
+</button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
+        <section class="relative rounded-2xl overflow-hidden bg-card-dark border border-border-dark shadow-xl" id="section-hero">
+            <div class="flex flex-col lg:flex-row h-auto lg:h-[450px]">
+                <div class="flex-1 p-8 lg:p-12 flex flex-col justify-center items-start z-10 relative">
+                    <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-[#181411] via-[#181411]/80 to-transparent lg:hidden z-[-1]"></div>
+                    <span class="inline-block px-3 py-1 rounded-full bg-primary/20 text-primary text-xs font-bold uppercase mb-4 tracking-wider">Sản phẩm nổi bật</span>
+                    <h2 class="text-4xl lg:text-5xl font-extrabold text-white leading-tight mb-4 drop-shadow-md">
+                        Nitro Cold Brew <br/>Signature Blend
+                    </h2>
+                    <p class="text-text-muted text-lg mb-8 max-w-md drop-shadow-sm">
+                        Trải nghiệm hương vị cà phê lạnh mượt mà, đậm đà với lớp bọt kem mịn màng tự nhiên. Khơi dậy mọi giác quan của bạn.
+                    </p>
+                    <div class="flex gap-4">
+                        <label class="bg-primary hover:bg-primary/90 text-[#181411] px-8 py-3 rounded-xl font-bold text-base transition-transform hover:scale-105 active:scale-95 shadow-lg shadow-primary/25 cursor-pointer flex items-center justify-center" for="cart-toggle">
+                            Mua ngay - 85.000đ
+                        </label>
+                        <button class="bg-transparent border border-white/30 text-white hover:bg-white/10 px-6 py-3 rounded-xl font-bold text-base transition-colors">
+                            Xem chi tiết
+                        </button>
+                    </div>
+                </div>
+                <div class="flex-1 relative h-64 lg:h-auto overflow-hidden">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform hover:scale-105 duration-700" data-alt="Close up of nitro cold brew coffee being poured into a glass with cascading foam" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDEgd4waF9BwLuQkbh_7xcEmxmAW89X3B9vY1w9guRxGnC0d2ElKvVlHK71ZO3gbv-0yGTAR5tEQ38mdejVpHzqQ9YVeUzIzqPWRYX7vfncVZpK4liWDuVnJ4pMndpjQTBNeW0F00DQN31fiW1TIlvXZ2953on9ISanwpLzXL0GkD4UFoVXxefwvp82HC1VcQme0TqPFhKfzh2Gc0nDzcgiQ8CqqlA46E9SzPEeiT1EZSf_X-F5RKl4tdVCaOtvCqYw2IyQTAgWX0I');"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#181411] to-transparent lg:bg-gradient-to-r"></div>
+                </div>
+            </div>
+        </section>
+        <section class="sticky top-[80px] z-40 bg-[#181411] py-4 -mx-4 px-4 sm:mx-0 sm:px-0">
+            <div class="flex gap-3 overflow-x-auto hide-scrollbar pb-2">
+                <label class="cursor-pointer flex shrink-0 items-center justify-center rounded-full bg-card-dark border border-border-dark hover:border-primary/50 hover:text-white text-text-muted px-6 py-2.5 transition-all select-none" for="cat-all">
+<p class="text-sm font-bold whitespace-nowrap">Tất cả</p>
+</label>
+                <label class="cursor-pointer flex shrink-0 items-center justify-center rounded-full bg-card-dark border border-border-dark hover:border-primary/50 hover:text-white text-text-muted px-6 py-2.5 transition-all select-none" for="cat-beans">
+<p class="text-sm font-bold whitespace-nowrap">Cà phê hạt</p>
+</label>
+                <label class="cursor-pointer flex shrink-0 items-center justify-center rounded-full bg-card-dark border border-border-dark hover:border-primary/50 hover:text-white text-text-muted px-6 py-2.5 transition-all select-none" for="cat-cups">
+<p class="text-sm font-bold whitespace-nowrap">Ly Nitro</p>
+</label>
+                <label class="cursor-pointer flex shrink-0 items-center justify-center rounded-full bg-card-dark border border-border-dark hover:border-primary/50 hover:text-white text-text-muted px-6 py-2.5 transition-all select-none" for="cat-acc">
+<p class="text-sm font-bold whitespace-nowrap">Phụ kiện pha chế</p>
+</label>
+            </div>
+        </section>
+        <section class="animate-in fade-in slide-in-from-bottom-4 duration-500" id="section-beans">
+            <div class="flex items-end justify-between mb-6">
+                <div>
+                    <h2 class="text-white text-2xl font-bold leading-tight">Cà phê hạt (Beans)</h2>
+                    <p class="text-text-muted text-sm mt-1">Tuyển chọn những hạt cà phê thượng hạng từ các vùng trồng nổi tiếng.</p>
+                </div>
+                <a class="hidden sm:flex text-primary text-sm font-bold hover:underline items-center gap-1" href="#">
+                    Xem tất cả <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-6">
+                <div class="group flex flex-col rounded-xl border border-border-dark bg-card-dark overflow-hidden hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300">
+                    <div class="relative aspect-square w-full overflow-hidden">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Bag of dark roast coffee beans on a wooden table" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBbWOXErBrnJeg9O4Uy1CvMdVNRZxJfVsQezQt3-vy_Qf95HWgp33iCQAUlP_4ud2Fk6yktUmc343Yyx4V7poB2NaMZ4cuAN-qdJs34sdh4eu4Qqqv0_d0CLa44iqn0tOYNJkoOEogFrhutyJuo8gyqoGU9PLxMV5MNyXceEH1Q1r6RI8K2HNXuzJkittnWWmQLdf5Au6fCEy8r0gS-M1XV6pcIedvVh3MSrhkyAr6onwzaR9aSgtaIOrPn_kjbfZy8cKU5th1mMhY');"></div>
+                        <div class="absolute top-3 right-3 bg-[#181411]/80 backdrop-blur text-white text-xs font-bold px-2 py-1 rounded">Mới</div>
+                    </div>
+                    <div class="flex flex-col gap-2 p-4 flex-grow">
+                        <div class="flex-grow">
+                            <h3 class="text-white text-base font-bold leading-tight group-hover:text-primary transition-colors">Robusta Honey</h3>
+                            <p class="text-text-muted text-xs mt-1 line-clamp-2">Hương vị đậm đà, hậu vị ngọt ngào của mật ong rừng.</p>
+                        </div>
+                        <div class="mt-2 pt-3 border-t border-white/5 flex items-center justify-between">
+                            <span class="text-primary font-bold">250.000đ</span>
+                            <label class="bg-white/10 hover:bg-primary hover:text-[#181411] text-white p-2 rounded-lg transition-colors cursor-pointer" for="cart-toggle">
+<span class="material-symbols-outlined text-[20px]">add_shopping_cart</span>
+</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="group flex flex-col rounded-xl border border-border-dark bg-card-dark overflow-hidden hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300">
+                    <div class="relative aspect-square w-full overflow-hidden">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Bag of Arabica coffee beans next to a cup of coffee" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCUe-gkGUCK6B7gbm3bghk0_fLsCGn8G9_0O0_XymplEgL8zrpzdLyq-hm53PbXFe2bbmKwBQqf6tU67udnR3B9F_4F-LWc-E6GzbSG59pC-3paYmOgU-GeCBGFhgWv_TrMY7SKHAC4cQaXfIp3Klbv59wV7S0D2TuVWWZRPdUIC93UEdq4hFJymcq86FaLH8_IMKbBJpkzlQKRBKV3SZb9Q3W1EdwdFLfYWhkPzLxbjZtekrVw4nhPKv1ywYSkkbiJArETHHT0ZXQ');"></div>
+                    </div>
+                    <div class="flex flex-col gap-2 p-4 flex-grow">
+                        <div class="flex-grow">
+                            <h3 class="text-white text-base font-bold leading-tight group-hover:text-primary transition-colors">Arabica Cầu Đất</h3>
+                            <p class="text-text-muted text-xs mt-1 line-clamp-2">Vị chua thanh, hương thơm quyến rũ.</p>
+                        </div>
+                        <div class="mt-2 pt-3 border-t border-white/5 flex items-center justify-between">
+                            <span class="text-primary font-bold">320.000đ</span>
+                            <label class="bg-white/10 hover:bg-primary hover:text-[#181411] text-white p-2 rounded-lg transition-colors cursor-pointer" for="cart-toggle">
+<span class="material-symbols-outlined text-[20px]">add_shopping_cart</span>
+</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="group flex flex-col rounded-xl border border-border-dark bg-card-dark overflow-hidden hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300">
+                    <div class="relative aspect-square w-full overflow-hidden">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Close up of roasted coffee beans texture" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAhCiZN8nZZBYCh1qnR6V0DLjSE60Quiecfwx4go2-KMlTOFmIdWKl-VM-MAh3qzTOafkUHdyn5fzNbCYO-55VEFxFhny1hz74yn8KlM3GB829XnmswxN3OEEeYdFGkyeK6v7RlX4b4XPX-UZC4BX97rEYzKUa7TzZ60d5syzWZFFObZqYz33A-_att0NSbf1K9JEuRScKp2sGzmM8RGM6DZEWjtdA-GExLSDkSBnwoqZ0tJTo14VizQvsvHP5MtCfBtgCd7QGkWiI');"></div>
+                        <div class="absolute top-3 left-3 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">-15%</div>
+                    </div>
+                    <div class="flex flex-col gap-2 p-4 flex-grow">
+                        <div class="flex-grow">
+                            <h3 class="text-white text-base font-bold leading-tight group-hover:text-primary transition-colors">Nitro House Blend</h3>
+                            <p class="text-text-muted text-xs mt-1 line-clamp-2">Sự kết hợp hoàn hảo giữa Robusta và Arabica.</p>
+                        </div>
+                        <div class="mt-2 pt-3 border-t border-white/5 flex items-center justify-between">
+                            <div class="flex flex-col">
+                                <span class="text-text-muted text-xs line-through">300.000đ</span>
+                                <span class="text-primary font-bold">255.000đ</span>
+                            </div>
+                            <label class="bg-white/10 hover:bg-primary hover:text-[#181411] text-white p-2 rounded-lg transition-colors cursor-pointer" for="cart-toggle">
+<span class="material-symbols-outlined text-[20px]">add_shopping_cart</span>
+</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="group flex flex-col rounded-xl border border-border-dark bg-card-dark overflow-hidden hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300">
+                    <div class="relative aspect-square w-full overflow-hidden">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Dark roasted espresso beans in a scoop" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCHk8QD1xkwgUAuu1W7CVBLFQLMmWfzU6PhumVhSMsitD8vgD6QoM8miKQ1GuZKlb2RR80slB7D3Ky1g9DZ7oRP4xWQEZPFHf32V-XhgvXT4XDisfItTqy4PTTohL2Lvi_iGmO1Iapfe5LKQieQTRE7tOQzatyZjT0MMsw8FUrbX3ET2Co1CH6cvcFCgaeV1cBYEdK6NXWbzmRi-zibEsZ5fY_OAXKrf2i2cINL488uHmgsfwW1iN5eYBPWRPqyy7IW7BpcjVL0VEk');"></div>
+                    </div>
+                    <div class="flex flex-col gap-2 p-4 flex-grow">
+                        <div class="flex-grow">
+                            <h3 class="text-white text-base font-bold leading-tight group-hover:text-primary transition-colors">Espresso Roast</h3>
+                            <p class="text-text-muted text-xs mt-1 line-clamp-2">Rang đậm chuyên dụng cho máy pha.</p>
+                        </div>
+                        <div class="mt-2 pt-3 border-t border-white/5 flex items-center justify-between">
+                            <span class="text-primary font-bold">280.000đ</span>
+                            <label class="bg-white/10 hover:bg-primary hover:text-[#181411] text-white p-2 rounded-lg transition-colors cursor-pointer" for="cart-toggle">
+<span class="material-symbols-outlined text-[20px]">add_shopping_cart</span>
+</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="group flex flex-col rounded-xl border border-border-dark bg-card-dark overflow-hidden hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300">
+                    <div class="relative aspect-square w-full overflow-hidden">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Single Origin Coffee Beans" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCUe-gkGUCK6B7gbm3bghk0_fLsCGn8G9_0O0_XymplEgL8zrpzdLyq-hm53PbXFe2bbmKwBQqf6tU67udnR3B9F_4F-LWc-E6GzbSG59pC-3paYmOgU-GeCBGFhgWv_TrMY7SKHAC4cQaXfIp3Klbv59wV7S0D2TuVWWZRPdUIC93UEdq4hFJymcq86FaLH8_IMKbBJpkzlQKRBKV3SZb9Q3W1EdwdFLfYWhkPzLxbjZtekrVw4nhPKv1ywYSkkbiJArETHHT0ZXQ');"></div>
+                        <div class="absolute top-3 right-3 bg-primary text-[#181411] text-xs font-bold px-2 py-1 rounded">HOT</div>
+                    </div>
+                    <div class="flex flex-col gap-2 p-4 flex-grow">
+                        <div class="flex-grow">
+                            <h3 class="text-white text-base font-bold leading-tight group-hover:text-primary transition-colors">Ethiopia Yirgacheffe</h3>
+                            <p class="text-text-muted text-xs mt-1 line-clamp-2">Hương hoa nhài và chanh vàng đặc trưng.</p>
+                        </div>
+                        <div class="mt-2 pt-3 border-t border-white/5 flex items-center justify-between">
+                            <span class="text-primary font-bold">380.000đ</span>
+                            <label class="bg-white/10 hover:bg-primary hover:text-[#181411] text-white p-2 rounded-lg transition-colors cursor-pointer" for="cart-toggle">
+<span class="material-symbols-outlined text-[20px]">add_shopping_cart</span>
+</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="animate-in fade-in slide-in-from-bottom-4 duration-500" id="section-cups">
+            <div class="flex items-end justify-between mb-6">
+                <div>
+                    <h2 class="text-white text-2xl font-bold leading-tight">Ly &amp; Cốc NITROZ</h2>
+                    <p class="text-text-muted text-sm mt-1">Phong cách thưởng thức cà phê hiện đại và cá tính.</p>
+                </div>
+                <a class="hidden sm:flex text-primary text-sm font-bold hover:underline items-center gap-1" href="#">
+                    Xem tất cả <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-6">
+                <div class="group flex flex-col rounded-xl border border-border-dark bg-card-dark overflow-hidden hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300">
+                    <div class="relative aspect-[4/5] w-full overflow-hidden">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Black matte tumbler on a dark surface" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBKnlFw3ZpbrWfKOu2h2WZS481Fdg7NVMXRKynHPLM087-ZOkZVnhF48oJ4l1KRVFE0lHWfQdLujy319Ne9XLi5rziH6Gc1uL1XiHAptiqAcM1SMAmKQiW1s5YgDcMIKjgNHS06qc7tOBWYXVE5qB1uPPrFCDVPwxdKdSTvjFQFYKQcdrHVpjwohhGoXLUyyKB2NqNXZy2_J_UHNEf9veS0Qbr8e4HwKpx0PYfSjNAuVdh8Nah6tmXZH1Cjk6IVpFFtw9bLRNTs-SI');"></div>
+                    </div>
+                    <div class="flex flex-col gap-2 p-4 flex-grow">
+                        <div class="flex-grow">
+                            <h3 class="text-white text-base font-bold leading-tight group-hover:text-primary transition-colors">Ly Giữ Nhiệt Matte</h3>
+                            <div class="flex gap-1 mt-1">
+                                <span class="w-3 h-3 rounded-full bg-black border border-white/20"></span>
+                                <span class="w-3 h-3 rounded-full bg-gray-600"></span>
+                            </div>
+                        </div>
+                        <div class="mt-2 pt-3 border-t border-white/5 flex items-center justify-between">
+                            <span class="text-primary font-bold">450.000đ</span>
+                            <label class="bg-white/10 hover:bg-primary hover:text-[#181411] text-white p-2 rounded-lg transition-colors cursor-pointer" for="cart-toggle">
+<span class="material-symbols-outlined text-[20px]">add_shopping_cart</span>
+</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="group flex flex-col rounded-xl border border-border-dark bg-card-dark overflow-hidden hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300">
+                    <div class="relative aspect-[4/5] w-full overflow-hidden">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Ceramic coffee mug with latte art" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBAKH486YNK8bztPZPPDqW4ntTqcwqMT3oY--9LUhlx8idVC2QGesT-qANQJo-5RUGBddFMUtJYTMCCXWIYBD7epwLPTRgOgC2ob_vQ6cxbARUvoyrJa8A_6ujBnAVJfiauQ_lIN4N8lo_yWXKD9q2wwi8Di7eNOPcCq8fh4MFlR6HhyC_4TCjsi_owYSxGaneDZ3FIqDNMOwuXornqHLAEX-gu_SlLvqvsgmpfczziM-S8MnribHnLlwiBOS-1_G4zctyHk6mSbdg');"></div>
+                    </div>
+                    <div class="flex flex-col gap-2 p-4 flex-grow">
+                        <div class="flex-grow">
+                            <h3 class="text-white text-base font-bold leading-tight group-hover:text-primary transition-colors">Cốc Sứ NITROZ</h3>
+                            <div class="flex gap-1 mt-1">
+                                <span class="w-3 h-3 rounded-full bg-white border border-white/20"></span>
+                                <span class="w-3 h-3 rounded-full bg-orange-500"></span>
+                            </div>
+                        </div>
+                        <div class="mt-2 pt-3 border-t border-white/5 flex items-center justify-between">
+                            <span class="text-primary font-bold">180.000đ</span>
+                            <label class="bg-white/10 hover:bg-primary hover:text-[#181411] text-white p-2 rounded-lg transition-colors cursor-pointer" for="cart-toggle">
+<span class="material-symbols-outlined text-[20px]">add_shopping_cart</span>
+</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="group flex flex-col rounded-xl border border-border-dark bg-card-dark overflow-hidden hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300">
+                    <div class="relative aspect-[4/5] w-full overflow-hidden">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Glass coffee cup with double walls" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBJfeKwtNZ07BA2WNro7LRHqNckFMiQ0OJ1pRCTCPlRngPs2uaegKlhI4s8-pkNejHe3IUtq_kuGur_EEUpq9AJfAlCOxAtYtFX_rZJGAN-dn5LK-Nlsb4qr4Kub-_mfa_EVgF0fK0jEhZt-8cZTjyOz7g1IBT9scY97OTe5WozZCpWnOBRNYV70D1dS_CRdi1UXQgutjCloGmNipergvM21Q41AxwyudRDys1jW8exANQFAi7lOXYZDOUqlh34nhCSbAnpzyZy5tA');"></div>
+                    </div>
+                    <div class="flex flex-col gap-2 p-4 flex-grow">
+                        <div class="flex-grow">
+                            <h3 class="text-white text-base font-bold leading-tight group-hover:text-primary transition-colors">Ly Thủy Tinh 2 Lớp</h3>
+                            <p class="text-text-muted text-xs mt-1 line-clamp-2">Giữ nhiệt tốt, không đọng nước.</p>
+                        </div>
+                        <div class="mt-2 pt-3 border-t border-white/5 flex items-center justify-between">
+                            <span class="text-primary font-bold">220.000đ</span>
+                            <label class="bg-white/10 hover:bg-primary hover:text-[#181411] text-white p-2 rounded-lg transition-colors cursor-pointer" for="cart-toggle">
+<span class="material-symbols-outlined text-[20px]">add_shopping_cart</span>
+</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="group flex flex-col rounded-xl border border-border-dark bg-card-dark overflow-hidden hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300">
+                    <div class="relative aspect-[4/5] w-full overflow-hidden">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Stainless steel travel mug" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBKnlFw3ZpbrWfKOu2h2WZS481Fdg7NVMXRKynHPLM087-ZOkZVnhF48oJ4l1KRVFE0lHWfQdLujy319Ne9XLi5rziH6Gc1uL1XiHAptiqAcM1SMAmKQiW1s5YgDcMIKjgNHS06qc7tOBWYXVE5qB1uPPrFCDVPwxdKdSTvjFQFYKQcdrHVpjwohhGoXLUyyKB2NqNXZy2_J_UHNEf9veS0Qbr8e4HwKpx0PYfSjNAuVdh8Nah6tmXZH1Cjk6IVpFFtw9bLRNTs-SI');"></div>
+                        <div class="absolute top-3 left-3 bg-primary text-[#181411] text-xs font-bold px-2 py-1 rounded">New</div>
+                    </div>
+                    <div class="flex flex-col gap-2 p-4 flex-grow">
+                        <div class="flex-grow">
+                            <h3 class="text-white text-base font-bold leading-tight group-hover:text-primary transition-colors">Bình Traveler Pro</h3>
+                            <p class="text-text-muted text-xs mt-1 line-clamp-2">Thiết kế dã ngoại, siêu bền.</p>
+                        </div>
+                        <div class="mt-2 pt-3 border-t border-white/5 flex items-center justify-between">
+                            <span class="text-primary font-bold">550.000đ</span>
+                            <label class="bg-white/10 hover:bg-primary hover:text-[#181411] text-white p-2 rounded-lg transition-colors cursor-pointer" for="cart-toggle">
+<span class="material-symbols-outlined text-[20px]">add_shopping_cart</span>
+</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="group flex flex-col rounded-xl border border-border-dark bg-card-dark overflow-hidden hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300">
+                    <div class="relative aspect-[4/5] w-full overflow-hidden">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110 grayscale-[0.2]" data-alt="Stainless steel travel mug" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBKnlFw3ZpbrWfKOu2h2WZS481Fdg7NVMXRKynHPLM087-ZOkZVnhF48oJ4l1KRVFE0lHWfQdLujy319Ne9XLi5rziH6Gc1uL1XiHAptiqAcM1SMAmKQiW1s5YgDcMIKjgNHS06qc7tOBWYXVE5qB1uPPrFCDVPwxdKdSTvjFQFYKQcdrHVpjwohhGoXLUyyKB2NqNXZy2_J_UHNEf9veS0Qbr8e4HwKpx0PYfSjNAuVdh8Nah6tmXZH1Cjk6IVpFFtw9bLRNTs-SI');"></div>
+                        <div class="absolute top-3 left-3 bg-white text-[#181411] text-xs font-bold px-2 py-1 rounded">Limited</div>
+                    </div>
+                    <div class="flex flex-col gap-2 p-4 flex-grow">
+                        <div class="flex-grow">
+                            <h3 class="text-white text-base font-bold leading-tight group-hover:text-primary transition-colors">Ly Cold Brew 24h</h3>
+                            <p class="text-text-muted text-xs mt-1 line-clamp-2">Phiên bản giới hạn mùa hè.</p>
+                        </div>
+                        <div class="mt-2 pt-3 border-t border-white/5 flex items-center justify-between">
+                            <span class="text-primary font-bold">390.000đ</span>
+                            <label class="bg-white/10 hover:bg-primary hover:text-[#181411] text-white p-2 rounded-lg transition-colors cursor-pointer" for="cart-toggle">
+<span class="material-symbols-outlined text-[20px]">add_shopping_cart</span>
+</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="animate-in fade-in slide-in-from-bottom-4 duration-500" id="section-acc">
+            <div class="flex items-end justify-between mb-6">
+                <div>
+                    <h2 class="text-white text-2xl font-bold leading-tight">Phụ Kiện Pha Chế</h2>
+                    <p class="text-text-muted text-sm mt-1">Dụng cụ chuyên nghiệp cho Barista tại gia.</p>
+                </div>
+                <a class="hidden sm:flex text-primary text-sm font-bold hover:underline items-center gap-1" href="#">
+                    Xem tất cả <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                <div class="flex gap-4 rounded-xl border border-border-dark bg-card-dark p-4 group hover:border-primary/50 transition-colors">
+                    <div class="w-24 h-24 shrink-0 rounded-lg bg-cover bg-center" data-alt="V60 coffee dripper" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBVeIuBL-Ba72fS6p2DS13AcUGMPGGDXN8PWjsux3OKjIWvmKGpvu66EsxxyDW7V4-6KmWxYpCl-VVDusmtCf0-0Sm5HDwMjxhGO-6_EtyUxL-hcVMQHAoCMe_coKltQOanSyy2BGJFfXz7ilOzZXHg354tx_xYsRh8Dw2abX5M1gVjJ2usSuUwPGXci7Y3TmB6BKR1i2P6_tegjgwWpduxj2hlzrzm9OG59RmzA5mReL-z5Xs6Wgdjy_A5avTh2ckcghiaedcB4Jk');"></div>
+                    <div class="flex flex-col justify-center gap-1">
+                        <h3 class="text-white font-bold group-hover:text-primary transition-colors">Phễu V60 Gốm</h3>
+                        <p class="text-primary font-bold">350.000đ</p>
+                        <label class="text-text-muted text-xs hover:text-white flex items-center gap-1 mt-1 cursor-pointer w-fit" for="cart-toggle">
+                             Thêm vào giỏ <span class="material-symbols-outlined text-[14px]">add</span>
+</label>
+                    </div>
+                </div>
+                <div class="flex gap-4 rounded-xl border border-border-dark bg-card-dark p-4 group hover:border-primary/50 transition-colors">
+                    <div class="w-24 h-24 shrink-0 rounded-lg bg-cover bg-center" data-alt="Manual coffee grinder" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC9O57EdThvkvcbO8Itbvc1BDCEOUtPQ4-oUrJFzS4q-2dF_CxStZafIabgh4vrj4Ue0Tacm3WaERa6T4sSc7Y3bBwpycruDEpoFi2rdZAT-X2dsPuLekfF8pr0aKoKqv6dQrtoDKfoibbavKsVOJKNSiJ9ZStFWNJksLwMS8dtZ994gVo2MNTp6wyayM-S-k_J6DJMzl55hIopQ90oN-GQtVdwoL0fAKG4caUxrBZlfU47T3yACpwSGgQspNLlrFzUaRaZF_iJoL4');"></div>
+                    <div class="flex flex-col justify-center gap-1">
+                        <h3 class="text-white font-bold group-hover:text-primary transition-colors">Cối Xay Tay</h3>
+                        <p class="text-primary font-bold">1.200.000đ</p>
+                        <label class="text-text-muted text-xs hover:text-white flex items-center gap-1 mt-1 cursor-pointer w-fit" for="cart-toggle">
+                             Thêm vào giỏ <span class="material-symbols-outlined text-[14px]">add</span>
+</label>
+                    </div>
+                </div>
+                <div class="flex gap-4 rounded-xl border border-border-dark bg-card-dark p-4 group hover:border-primary/50 transition-colors">
+                    <div class="w-24 h-24 shrink-0 rounded-lg bg-cover bg-center" data-alt="Coffee scale with timer" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD1Bn7pJixke0eFuvUnUzIXilmx0AHvkLr7rS3QHSezgdBznhUUDQN-BpnVcys8LTvY-dK8b2UkbHXJ2DYKhqF-YEM_xi9yFvO4-jcHVZrU5bYKBnQEG7UxlT6_wEiC18P3XL3VpcHTWRrwfnoVDJbQmxLnKqQDEePhhjmRrmXIvD11vWW-F38rddr6yN9Vj_FQR-nXyFyvdmxAwnizxuworyrVNtg0UauLpDCZ3Yg4hDeYzAdPnWTAlp8hybuhnzHFVSLgip3egaA');"></div>
+                    <div class="flex flex-col justify-center gap-1">
+                        <h3 class="text-white font-bold group-hover:text-primary transition-colors">Cân Điện Tử</h3>
+                        <p class="text-primary font-bold">450.000đ</p>
+                        <label class="text-text-muted text-xs hover:text-white flex items-center gap-1 mt-1 cursor-pointer w-fit" for="cart-toggle">
+                             Thêm vào giỏ <span class="material-symbols-outlined text-[14px]">add</span>
+</label>
+                    </div>
+                </div>
+                <div class="flex gap-4 rounded-xl border border-border-dark bg-card-dark p-4 group hover:border-primary/50 transition-colors">
+                    <div class="w-24 h-24 shrink-0 rounded-lg bg-cover bg-center" data-alt="Gooseneck kettle for pour over coffee" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDcANEQoxGdPsUbEyoR4KSDf6BmWUx6yO7pZWny6qdde_HoKAj8rf2SDwvO2M8lMBjcCIrKmLpvT5U6PQl-UkbkuB0zlFbfK84XjdasfRyYRly2FoFXM68pysbMgw2LRnfqfc_4bZFxZXPvQcOs3jk_QS88vXoEzXWAGeBKRAQK2v2oMDBo8uPH85RJsJBqmhBh31ttdLGS41JvOcaWUZ9x2zxhfJ0owXSvp3uYwi1Sni2t3LhA9fPi-kzsd2PBIKWOxlcMYAdKbhE');"></div>
+                    <div class="flex flex-col justify-center gap-1">
+                        <h3 class="text-white font-bold group-hover:text-primary transition-colors">Ấm Rót Cổ Ngỗng</h3>
+                        <p class="text-primary font-bold">890.000đ</p>
+                        <label class="text-text-muted text-xs hover:text-white flex items-center gap-1 mt-1 cursor-pointer w-fit" for="cart-toggle">
+                             Thêm vào giỏ <span class="material-symbols-outlined text-[14px]">add</span>
+</label>
+                    </div>
+                </div>
+                <div class="flex gap-4 rounded-xl border border-border-dark bg-card-dark p-4 group hover:border-primary/50 transition-colors">
+                    <div class="w-24 h-24 shrink-0 rounded-lg bg-cover bg-center" data-alt="V60 Filters" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBVeIuBL-Ba72fS6p2DS13AcUGMPGGDXN8PWjsux3OKjIWvmKGpvu66EsxxyDW7V4-6KmWxYpCl-VVDusmtCf0-0Sm5HDwMjxhGO-6_EtyUxL-hcVMQHAoCMe_coKltQOanSyy2BGJFfXz7ilOzZXHg354tx_xYsRh8Dw2abX5M1gVjJ2usSuUwPGXci7Y3TmB6BKR1i2P6_tegjgwWpduxj2hlzrzm9OG59RmzA5mReL-z5Xs6Wgdjy_A5avTh2ckcghiaedcB4Jk');"></div>
+                    <div class="flex flex-col justify-center gap-1">
+                        <h3 class="text-white font-bold group-hover:text-primary transition-colors">Giấy Lọc V60</h3>
+                        <p class="text-primary font-bold">120.000đ</p>
+                        <label class="text-text-muted text-xs hover:text-white flex items-center gap-1 mt-1 cursor-pointer w-fit" for="cart-toggle">
+                             Thêm vào giỏ <span class="material-symbols-outlined text-[14px]">add</span>
+</label>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="rounded-2xl bg-gradient-to-r from-card-dark to-[#181411] border border-border-dark p-8 md:p-12 text-center">
+            <h2 class="text-white text-2xl md:text-3xl font-bold mb-4">Đăng ký nhận tin &amp; Ưu đãi</h2>
+            <p class="text-text-muted mb-6 max-w-xl mx-auto">Nhận mã giảm giá 10% cho đơn hàng đầu tiên và cập nhật về các loại hạt cà phê mới nhất.</p>
+            <div class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+                <input class="flex-grow rounded-lg bg-white/5 border border-border-dark text-white px-4 py-3 focus:ring-2 focus:ring-primary focus:border-transparent outline-none placeholder-text-muted/50" placeholder="Email của bạn" type="email" />
+                <button class="bg-primary hover:bg-primary/90 text-[#181411] px-6 py-3 rounded-lg font-bold transition-colors whitespace-nowrap">Đăng ký</button>
+            </div>
+        </section>
+    </main>
+    <footer class="bg-[#120f0c] border-t border-[#393028] mt-12 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div class="col-span-2 md:col-span-1">
+                <div class="flex items-center gap-2 mb-4">
+                    <span class="material-symbols-outlined text-primary text-2xl">coffee</span>
+                    <span class="text-white text-xl font-bold">NITROZ</span>
+                </div>
+                <p class="text-text-muted text-sm">Chất lượng cà phê thượng hạng cho những tâm hồn đồng điệu.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Sản phẩm</h4>
+                <ul class="space-y-2 text-sm text-text-muted">
+                    <li><a class="hover:text-primary" href="#">Cà phê hạt</a></li>
+                    <li><a class="hover:text-primary" href="#">Dụng cụ pha chế</a></li>
+                    <li><a class="hover:text-primary" href="#">Quà tặng</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Hỗ trợ</h4>
+                <ul class="space-y-2 text-sm text-text-muted">
+                    <li><a class="hover:text-primary" href="#">Chính sách vận chuyển</a></li>
+                    <li><a class="hover:text-primary" href="#">Đổi trả hàng</a></li>
+                    <li><a class="hover:text-primary" href="#">Liên hệ</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Kết nối</h4>
+                <div class="flex gap-4">
+                    <a class="w-8 h-8 rounded bg-white/10 flex items-center justify-center text-white hover:bg-primary hover:text-[#181411] transition-colors" href="#">F</a>
+                    <a class="w-8 h-8 rounded bg-white/10 flex items-center justify-center text-white hover:bg-primary hover:text-[#181411] transition-colors" href="#">I</a>
+                    <a class="w-8 h-8 rounded bg-white/10 flex items-center justify-center text-white hover:bg-primary hover:text-[#181411] transition-colors" href="#">Y</a>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-8 border-t border-[#393028] text-center text-text-muted text-xs">
+            © 2025 NITROZ Coffee. All rights reserved.
+        </div>
+    </footer>
+    <script>
+        // Cấu hình tài khoản ngân hàng
+        const CONFIG = {
+            bank: "MB",
+            stk: "0000305896688",
+            name: "PHAN TRUNG HIEU"
+        };
+
+        let cart = [];
+
+        // Hàm định dạng tiền tệ (VD: 1.200.000đ)
+        const fmt = (v) => new Intl.NumberFormat('vi-VN').format(v) + 'đ';
+
+        function updateEverywhere() {
+            // Tính toán tổng số lượng và tổng tiền thực tế
+            const total = cart.reduce((s, i) => s + (i.price * i.qty), 0);
+            const count = cart.reduce((s, i) => s + i.qty, 0);
+
+            // 1. Cập nhật Badge trên icon giỏ hàng
+            const badge = document.querySelector('.bg-primary.text-xs');
+            if (badge) badge.innerText = count;
+
+            // 2. Cập nhật Tổng tiền tại Sidebar
+            const sideTotal = document.getElementById('side-total');
+            if (sideTotal) sideTotal.innerText = fmt(total);
+
+            // 3. Cập nhật Tổng thanh toán tại Modal (Phần bạn muốn sửa)
+            const checkoutTotal = document.getElementById('checkout-total');
+            if (checkoutTotal) checkoutTotal.innerText = fmt(total);
+
+            // 4. Vẽ lại danh sách sản phẩm trong Sidebar
+            const sideBox = document.querySelector('.cart-sidebar .flex-1.overflow-y-auto');
+            if (sideBox) {
+                sideBox.innerHTML = cart.length ? cart.map((item, idx) => `
+            <div class="flex gap-4 items-center p-3 bg-white/5 rounded-xl mb-3">
+                <div class="w-12 h-12 rounded bg-cover bg-center" style="background-image: url('${item.img}')"></div>
+                <div class="flex-1">
+                    <h4 class="text-white font-bold text-[10px] uppercase">${item.name}</h4>
+                    <p class="text-primary font-bold text-xs">${fmt(item.price)} x ${item.qty}</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button onclick="changeQty(${idx}, -1)" class="w-6 h-6 bg-white/10 rounded text-white hover:bg-primary">-</button>
+                    <span class="text-white text-sm w-4 text-center">${item.qty}</span>
+                    <button onclick="changeQty(${idx}, 1)" class="w-6 h-6 bg-white/10 rounded text-white hover:bg-primary">+</button>
+                </div>
+            </div>`).join('') : '<p class="text-center py-20 opacity-40">Giỏ hàng trống</p>';
+            }
+
+            // 5. Cập nhật mã QR Code theo số tiền mới nhất
+            const qrImg = document.querySelector('.qr-section img');
+            if (qrImg) {
+                qrImg.src = `https://img.vietqr.io/image/${CONFIG.bank}-${CONFIG.stk}-compact2.jpg?amount=${total}&addInfo=NITROZ%20ORDER&accountName=${encodeURIComponent(CONFIG.name)}`;
+            }
+        }
+
+        // Hàm thay đổi số lượng món đồ
+        window.changeQty = (idx, delta) => {
+            cart[idx].qty += delta;
+            if (cart[idx].qty <= 0) cart.splice(idx, 1);
+            updateEverywhere();
+        };
+
+        // Gán sự kiện khi trang đã sẵn sàng
+        document.addEventListener('DOMContentLoaded', () => {
+            // Xử lý nút "Chọn món"
+            document.querySelectorAll('label[for="cart-toggle"]').forEach(btn => {
+                btn.onclick = function() {
+                    const card = this.closest('.group');
+                    if (!card) return;
+
+                    const name = card.querySelector('h3').innerText;
+                    const price = parseInt(card.querySelector('.text-primary.font-bold').innerText.replace(/\D/g, ''));
+                    const imgStyle = card.querySelector('.bg-cover').style.backgroundImage;
+                    const img = imgStyle.slice(5, -2).replace(/"/g, "");
+
+                    const existing = cart.find(i => i.name === name);
+                    if (existing) {
+                        existing.qty++;
+                    } else {
+                        cart.push({
+                            name,
+                            price,
+                            img,
+                            qty: 1
+                        });
+                    }
+                    updateEverywhere();
+                };
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html class="dark" lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>NITROZ Coffee - Thực Đơn &amp; Thanh Toán (Desktop)</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f27f0d",
+                        "primary-dark": "#d66c00",
+                        "background-light": "#f8f7f5",
+                        "background-dark": "#221910",
+                        "surface-dark": "#2f241a",
+                        "surface-darker": "#1a140e",
+                        "surface-light": "#ffffff",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "3xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+         ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        
+         ::-webkit-scrollbar-track {
+            background: #2f241a;
+        }
+        
+         ::-webkit-scrollbar-thumb {
+            background: #555;
+            border-radius: 3px;
+        }
+        
+         ::-webkit-scrollbar-thumb:hover {
+            background: #f27f0d;
+        }
+        
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        .material-symbols-filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        .hover-reveal {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .group:hover .hover-reveal {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .bg-pattern {
+            background-image: radial-gradient(#f27f0d 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+            opacity: 0.03;
+        }
+        
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+
+</head>
+
+<body class="bg-background-dark font-display text-white antialiased h-screen w-screen overflow-hidden flex selection:bg-primary selection:text-white">
+    <aside class="hidden md:flex w-64 shrink-0 flex-col bg-surface-darker border-r border-white/5 z-20 relative">
+        <div class="h-20 flex items-center px-6 border-b border-white/5 gap-3 shrink-0">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-orange-600 flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-primary/20">N</div>
+            <div>
+                <h1 class="font-extrabold tracking-tight text-white leading-none text-lg">NITROZ
+
+            </div>
+        </div>
+        <nav class="flex-1 overflow-y-auto py-6 px-4 space-y-1 custom-scrollbar">
+            <div class="text-xs font-bold text-gray-0 uppercase tracking-wider mb-0 px-0">Danh mục</div>
+            <a class="flex items-center gap-3 px-3 py-3 rounded-xl text-gray-400 hover:bg-white/5 hover:text-white transition-all font-medium" href="#home">
+                <a href="./nitroz.html" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-all group">
+                    <span class="material-symbols-outlined">home</span>
+                    <span>Trang chủ</span>
+                </a>
+                <a href="#hot" class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary/10 text-primary border border-primary/20 transition-all">
+                    <span class="material-symbols-outlined text-[22px]">local_fire_department</span>
+                    <span class="font-bold text-sm tracking-wide">Hot Trend</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-3 rounded-xl text-gray-400 hover:bg-white/5 hover:text-white transition-all font-medium" href="#coffee">
+                    <span class="material-symbols-outlined">coffee</span> Cà phê
+                </a>
+                <a class="flex items-center gap-3 px-3 py-3 rounded-xl text-gray-400 hover:bg-white/5 hover:text-white transition-all font-medium" href="#tea">
+                    <span class="material-symbols-outlined">emoji_food_beverage</span> Nước Ép &amp; Trà
+                </a>
+                <a class="flex items-center gap-3 px-3 py-3 rounded-xl text-gray-400 hover:bg-white/5 hover:text-white transition-all font-medium" href="#pastry">
+                    <span class="material-symbols-outlined">bakery_dining</span> Bánh Ngọt
+                </a>
+                <div class="my-4 border-t border-white/5"></div>
+                <div class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3 px-2">Khác</div>
+                <a class="flex items-center gap-3 px-3 py-3 rounded-xl text-gray-400 hover:bg-white/5 hover:text-white transition-all font-medium" href="#">
+                    <span class="material-symbols-outlined">card_giftcard</span> Combo &amp; Ưu đãi
+                </a>
+                <a class="flex items-center gap-3 px-3 py-3 rounded-xl text-gray-400 hover:bg-white/5 hover:text-white transition-all font-medium" href="#">
+
+                </a>
+        </nav>
+        <div class="p-4 border-t border-white/5 shrink-0">
+            <button class="flex items-center gap-3 w-full p-2 rounded-xl hover:bg-white/5 transition-colors text-left group">
+<div class="size-10 rounded-full bg-gray-700 flex items-center justify-center border-2 border-transparent group-hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-gray-300">person</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-bold text-white truncate">Khách hàng</p>
+<p class="text-xs text-gray-500 truncate">Thành viên Bạc</p>
+</div>
+<span class="material-symbols-outlined text-gray-500 group-hover:text-primary">settings</span>
+</button>
+        </div>
+    </aside>
+    <main class="flex-1 flex flex-col relative min-w-0 bg-background-dark">
+        <div class="absolute inset-0 bg-pattern pointer-events-none"></div>
+        <header class="h-20 shrink-0 border-b border-white/5 flex items-center justify-between px-8 bg-background-dark/95 backdrop-blur z-10 sticky top-0">
+            <div class="flex-1 max-w-xl">
+                <div class="relative group">
+                    <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined">search</span>
+                    </span>
+                    <input class="w-full bg-surface-darker border border-white/10 rounded-full py-2.5 pl-12 pr-4 text-sm text-white placeholder-gray-500 focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all" placeholder="Tìm kiếm hơn 10 món ăn, đồ uống..."
+                        type="text" />
+                </div>
+            </div>
+            <div class="flex items-center gap-4 ml-6">
+                <button class="relative p-2 text-gray-400 hover:text-white transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-red-500 rounded-full ring-2 ring-background-dark"></span>
+</button>
+                <div class="h-8 w-px bg-white/10"></div>
+                <div class="text-right hidden xl:block">
+                    <p class="text-xs text-gray-400">Trạng thái quán</p>
+                    <p class="text-sm font-bold text-green-500 flex items-center justify-end gap-1">
+                        <span class="size-2 bg-green-500 rounded-full animate-pulse"></span> Đang mở cửa
+                    </p>
+                </div>
+            </div>
+        </header>
+        <div class="flex-1 overflow-y-auto p-8 scroll-smooth" id="main-scroll">
+            <div class="relative w-full h-[320px] rounded-3xl overflow-hidden shadow-2xl mb-12 group">
+                <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent z-10"></div>
+                <img alt="Hero Coffee" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhUtED4NpAx7wKX_FHtrmYxUOT53uZWHz7oMt2Md4vncasxyXKhbS7FThsEHhYtGS9BnxEqLupbKYKHIYInpJ2Iv6lptJD10exCoMJb9UDAXEcrWqk1dKUvJcO7HyIKxk56M5GkJWXJEUBeg8tmD3UhFwP9wVDLFPd_rccIH5dwIgsATl-wSFU940kdTqEvtBztXz72zhtfHDDiA2vGCsnOwZEfozXtqfiLEA6ig9UnXFJ_PI54g9uebebNDG4RT4vQ0SWwh4pCqk"
+                />
+                <div class="absolute inset-y-0 left-0 p-12 flex flex-col justify-center max-w-xl z-20">
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="inline-block px-3 py-1 bg-primary text-white text-[10px] font-extrabold tracking-wider uppercase rounded-full shadow-lg shadow-primary/30">Mới ra mắt</span>
+                        <span class="inline-block px-3 py-1 bg-white/10 backdrop-blur text-white text-[10px] font-bold tracking-wider uppercase rounded-full border border-white/10">Limited Edition</span>
+                    </div>
+                    <h2 class="text-5xl font-extrabold text-white leading-tight mb-4 tracking-tight">Nitro Cold Brew <br/>Phiên Bản Đặc Biệt</h2>
+                    <p class="text-gray-300 text-lg mb-8 line-clamp-2 leading-relaxed opacity-90">Hương vị đậm đà, lớp foam mềm mịn như nhung. Một trải nghiệm cà phê đỉnh cao đánh thức mọi giác quan.</p>
+                    <div class="flex gap-4">
+                        <button class="px-8 py-3.5 bg-primary text-white font-bold rounded-xl hover:bg-primary-dark transition-colors flex items-center gap-2 shadow-lg shadow-primary/25">
+                        Đặt Ngay
+                        <span class="material-symbols-outlined text-sm">shopping_cart</span>
+</button>
+                        <button class="px-8 py-3.5 bg-white/10 backdrop-blur border border-white/10 text-white font-bold rounded-xl hover:bg-white/20 transition-colors flex items-center gap-2">
+                        Xem chi tiết
+                    </button>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-16 scroll-mt-24" id="popular">
+                <div class="flex items-center justify-between mb-6 sticky top-0 bg-background-dark/95 backdrop-blur z-10 py-4 -mx-8 px-8 border-b border-white/5">
+                    <h3 class="text-2xl font-bold text-white flex items-center gap-3">
+                        <span class="flex items-center justify-center size-10 rounded-full bg-primary/20 text-primary">
+<span class="material-symbols-outlined">local_fire_department</span>
+                        </span>
+                        Món được yêu thích
+                        <span class="text-sm font-normal text-gray-500 ml-2">(30 món)</span>
+                    </h3>
+                    <div class="flex gap-2">
+                        <a class="text-sm font-bold text-primary hover:text-primary-dark transition-colors flex items-center" href="#coffee">
+                        Xem tất cả <span class="material-symbols-outlined text-lg">arrow_forward</span>
+</a>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6">
+                    <div class="group relative bg-surface-dark rounded-2xl p-3 border border-white/5 hover:border-primary/50 transition-all hover:shadow-xl hover:shadow-primary/5 flex flex-col">
+                        <div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-surface-darker">
+                            <img src="./hình ảnh/ca-phe-da-xay-latte-vanilla.jpg" class="w-full aspect-[4/3] object-cover rounded-xl mb-3" alt="Latte Đá Xay"> />
+                            <div class="absolute top-2 right-2 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-lg">-10%</div>
+                            <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-3 backdrop-blur-[2px]">
+                                <span class="text-xs font-bold text-white uppercase tracking-wide">Chọn Size</span>
+                                <div class="flex gap-2">
+                                    <button class="size-9 rounded-full bg-white text-black font-bold text-xs hover:bg-primary hover:text-white hover:scale-110 transition-all shadow-lg">S</button>
+                                    <button class="size-9 rounded-full bg-white text-black font-bold text-xs hover:bg-primary hover:text-white hover:scale-110 transition-all shadow-lg">M</button>
+                                    <button class="size-9 rounded-full bg-white text-black font-bold text-xs hover:bg-primary hover:text-white hover:scale-110 transition-all shadow-lg">L</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="px-1 flex-1 flex flex-col">
+                            <div class="flex justify-between items-start mb-1">
+                                <h4 class="text-lg font-bold text-white truncate group-hover:text-primary transition-colors">Latte Đá Xay</h4>
+                                <span class="text-primary font-bold whitespace-nowrap">45.000đ</span>
+                            </div>
+                            <p class="text-sm text-gray-500 line-clamp-2 mb-4 flex-1">Thơm béo vị sữa, mát lạnh với đá xay mịn.</p>
+                            <button onclick="addToCart('Latte Đá Xay', 45000, './hình ảnh/ca-phe-da-xay-latte-vanilla.jpg')" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-primary text-white font-semibold transition-colors flex items-center justify-center gap-2 group-hover:bg-primary">
+    <span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+    Thêm món
+</button>
+                        </div>
+                    </div>
+                    <div class="group relative bg-surface-dark rounded-2xl p-3 border border-white/5 hover:border-primary/50 transition-all hover:shadow-xl hover:shadow-primary/5 flex flex-col">
+                        <div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-surface-darker">
+                            <img src="./hình ảnh/0400231440000.jpg.webp" class="w-full aspect-[4/3] object-cover rounded-xl mb-3" alt="Bánh Croissant Bơ"> />
+                            <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-2 backdrop-blur-[2px]">
+
+                            </div>
+                        </div>
+                        <div class="px-1 flex-1 flex flex-col">
+                            <div class="flex justify-between items-start mb-1">
+                                <h4 class="text-lg font-bold text-white truncate group-hover:text-primary transition-colors">Bánh Croissant Bơ</h4>
+                                <span class="text-primary font-bold whitespace-nowrap">35.000đ</span>
+                            </div>
+                            <p class="text-sm text-gray-500 line-clamp-2 mb-4 flex-1">Bánh sừng bò ngàn lớp, thơm lừng vị bơ Pháp.</p>
+                            <button onclick="addToCart('Bánh Croissant Bơ', 35000, './hình ảnh/0400231440000.jpg.webp')" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-primary text-white font-semibold transition-colors flex items-center justify-center gap-2 group-hover:bg-primary">
+    <span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+    Thêm món
+</button>
+                        </div>
+                    </div>
+                    <div class="group relative bg-surface-dark rounded-2xl p-3 border border-white/5 hover:border-primary/50 transition-all hover:shadow-xl hover:shadow-primary/5 flex flex-col">
+                        <div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-surface-darker">
+                            <img alt="Tea" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1pl2zgw3ZrRjrAymJrhU35XEKQf0m5wOVHlr6n39BxL1WsO8sCpDC9d1hkdHxbSkTZ1bxsCzQryMjMit1ckrp5hkZdAkNpYYTL2TOO9Oxo9ykWz5n_iPiYr7FkQGk45ESlZfmWe5HXG3xy-9pc7xYhZIM7b2SAr5lWyJC5zLjNbHId-jtRln_GtrNMPhol_mtVRn8I1Cg2J7YO4phIgHsSeDLOmtDmWn_Frythm_SHVJ95eztl1w_8fFqWaJFXjT30r3ny0COtuY"
+                            />
+                            <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-3 backdrop-blur-[2px]">
+                                <span class="text-xs font-bold text-white uppercase tracking-wide">Chọn Size</span>
+                                <div class="flex gap-2">
+                                    <button class="size-9 rounded-full bg-white text-black font-bold text-xs hover:bg-primary hover:text-white hover:scale-110 transition-all shadow-lg">M</button>
+                                    <button class="size-9 rounded-full bg-white text-black font-bold text-xs hover:bg-primary hover:text-white hover:scale-110 transition-all shadow-lg">L</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="px-1 flex-1 flex flex-col">
+                            <div class="flex justify-between items-start mb-1">
+                                <h4 class="text-lg font-bold text-white truncate group-hover:text-primary transition-colors">Trà Đào Cam Sả</h4>
+                                <span class="text-primary font-bold whitespace-nowrap">40.000đ</span>
+                            </div>
+                            <p class="text-sm text-gray-500 line-clamp-2 mb-4 flex-1">Thanh mát, giải nhiệt với đào miếng giòn tan.</p>
+                            <button onclick="addToCart('Trà Đào Cam Sả', 40000, 'https://lh3.googleusercontent.com/aida-public/AB6AXuC1pl2zgw3ZrRjrAymJrhU35XEKQf0m5wOVHlr6n39BxL1WsO8sCpDC9d1hkdHxbSkTZ1bxsCzQryMjMit1ckrp5hkZdAkNpYYTL2TOO9Oxo9ykWz5n_iPiYr7FkQGk45ESlZfmWe5HXG3xy-9pc7xYhZIM7b2SAr5lWyJC5zLjNbHId-jtRln_GtrNMPhol_mtVRn8I1Cg2J7YO4phIgHsSeDLOmtDmWn_Frythm_SHVJ95eztl1w_8fFqWaJFXjT30r3ny0COtuY')"
+                                class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-primary text-white font-semibold transition-colors flex items-center justify-center gap-2 group-hover:bg-primary">
+    <span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+    Thêm món
+</button>
+                        </div>
+                    </div>
+                    <div class="group relative bg-surface-dark rounded-2xl p-3 border border-white/5 hover:border-primary/50 transition-all hover:shadow-xl hover:shadow-primary/5 flex flex-col">
+                        <div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-surface-darker">
+                            <img src="./hình ảnh/Cach-Lam-Cold-Brew-Cam-Sa-Thuc-Uong-Thanh-Thoi-Va-Mat-Lanh.jpg" class="w-full aspect-[4/3] object-cover rounded-xl mb-3" alt="Cold Brew"> />
+                            <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-2 backdrop-blur-[2px]">
+
+                            </div>
+                        </div>
+                        <div class="px-1 flex-1 flex flex-col">
+                            <div class="flex justify-between items-start mb-1">
+                                <h4 class="text-lg font-bold text-white truncate group-hover:text-primary transition-colors">Cold Brew</h4>
+                                <span class="text-primary font-bold whitespace-nowrap">50.000đ</span>
+                            </div>
+                            <p class="text-sm text-gray-500 line-clamp-2 mb-4 flex-1">Cà phê ủ lạnh 24h, hương vị mượt mà.</p>
+                            <button onclick="addToCart('Cold Brew', 50000, './hình ảnh/Cach-Lam-Cold-Brew-Cam-Sa-Thuc-Uong-Thanh-Thoi-Va-Mat-Lanh.jpg')" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-primary text-white font-semibold transition-colors flex items-center justify-center gap-2 group-hover:bg-primary">
+    <span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+    Thêm món
+</button>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-16 scroll-mt-24" id="coffee">
+                <div class="flex items-center justify-between mb-6 sticky top-0 bg-background-dark/95 backdrop-blur z-10 py-4 -mx-8 px-8 border-b border-white/5">
+                    <h3 class="text-2xl font-bold text-white flex items-center gap-3">
+                        <span class="flex items-center justify-center size-10 rounded-full bg-primary/20 text-primary">
+<span class="material-symbols-outlined">coffee</span>
+                        </span>
+                        Cà Phê
+                        <span class="text-sm font-normal text-gray-500 ml-2">(50 món)</span>
+                    </h3>
+                    <div class="flex gap-2">
+                        <button class="px-3 py-1 rounded-full border border-white/10 hover:bg-white/5 text-xs text-gray-300 transition-colors">Đá xay</button>
+                        <button class="px-3 py-1 rounded-full border border-white/10 hover:bg-white/5 text-xs text-gray-300 transition-colors">Pha máy</button>
+                        <button class="px-3 py-1 rounded-full border border-white/10 hover:bg-white/5 text-xs text-gray-300 transition-colors">Ủ lạnh</button>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6">
+                    <div class="group relative bg-surface-dark rounded-2xl p-3 border border-white/5 hover:border-primary/50 transition-all hover:shadow-xl hover:shadow-primary/5 flex flex-col">
+                        <div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-surface-darker">
+                            <img src="./hình ảnh/Espresso.jpg" class="w-full aspect-[4/3] object-cover rounded-xl mb-3" alt="Espresso"> />
+                            <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-3 backdrop-blur-[2px]">
+                                <span class="text-xs font-bold text-white uppercase tracking-wide">Chọn Size</span>
+                                <div class="flex gap-2">
+                                    <button class="size-9 rounded-full bg-white text-black font-bold text-xs hover:bg-primary hover:text-white transition-all">S</button>
+                                    <button class="size-9 rounded-full bg-white text-black font-bold text-xs hover:bg-primary hover:text-white transition-all">M</button>
+                                    <button class="size-9 rounded-full bg-white text-black font-bold text-xs hover:bg-primary hover:text-white transition-all">L</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="px-1 flex-1 flex flex-col">
+                            <div class="flex justify-between items-start mb-1">
+                                <h4 class="text-lg font-bold text-white truncate group-hover:text-primary transition-colors">Espresso</h4>
+                                <span class="text-primary font-bold">29.000đ</span>
+                            </div>
+                            <p class="text-sm text-gray-500 line-clamp-2 mb-4 flex-1">Đậm đà, nguyên chất 100% Arabica.</p>
+                            <button onclick="addToCart('Espresso', 29000, './hình ảnh/Espresso.jpg')" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-primary text-white font-semibold transition-colors flex items-center justify-center gap-2 group-hover:bg-primary">
+    <span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+    Thêm món
+</button>
+                        </div>
+                    </div>
+                    <div class="group relative bg-surface-dark rounded-2xl p-3 border border-white/5 hover:border-primary/50 transition-all hover:shadow-xl hover:shadow-primary/5 flex flex-col">
+                        <div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-surface-darker">
+                            <img src="./hình ảnh/cach-lam-americano-da-4.webp" class="w-full aspect-[4/3] object-cover rounded-xl mb-3" alt="Americano"> />
+                            <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-3 backdrop-blur-[2px]">
+                                <span class="text-xs font-bold text-white uppercase tracking-wide">Chọn Size</span>
+                                <div class="flex gap-2">
+                                    <button class="size-9 rounded-full bg-white text-black font-bold text-xs hover:bg-primary hover:text-white transition-all">S</button>
+                                    <button class="size-9 rounded-full bg-white text-black font-bold text-xs hover:bg-primary hover:text-white transition-all">M</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="px-1 flex-1 flex flex-col">
+                            <div class="flex justify-between items-start mb-1">
+                                <h4 class="text-lg font-bold text-white truncate group-hover:text-primary transition-colors">Americano Đá</h4>
+                                <span class="text-primary font-bold">35.000đ</span>
+                            </div>
+                            <p class="text-sm text-gray-500 line-clamp-2 mb-4 flex-1">Cà phê nhẹ nhàng, giải khát sảng khoái.</p>
+                            <button onclick="addToCart('Americano Đá', 35000, './hình ảnh/cach-lam-americano-da-4.webp')" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-primary text-white font-semibold transition-colors flex items-center justify-center gap-2 group-hover:bg-primary">
+    <span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+    Thêm món
+</button>
+                        </div>
+                    </div>
+                    <div class="group relative bg-surface-dark rounded-2xl p-3 border border-white/5 hover:border-primary/50 transition-all hover:shadow-xl hover:shadow-primary/5 flex flex-col">
+                        <div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-surface-darker">
+                            <img alt="Coffee Item" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8S1teLD-F3w50ObbUmTUTG-MSr-inAj9Knstpz-EgWoCOOa6ZNppIILSJnaFRB-HfdjrgHFpq7VKtwoEtDCvdsnYgD_nCyrkr2ERmZX-7tWcyWSo3DcDJ2fCCnOOYDmBQlIYEGOV7KkD0cEVDnt_2hokOpUz9hHH9DrCcBw2b4W00HnQLLVVYtRMlErPNnX5TGjlEMBVdS-iKQ7Zoi1vjxsY2oAbvLXkcvez7nrZb7LCOr5E7dyM82fpTnOeZ26ow1LKihUISJ3A"
+                            />
+                            <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-3 backdrop-blur-[2px]">
+                                <span class="text-xs font-bold text-white uppercase tracking-wide">Chọn Size</span>
+                                <div class="flex gap-2">
+                                    <button class="size-9 rounded-full bg-white text-black font-bold text-xs hover:bg-primary hover:text-white transition-all">S</button>
+                                    <button class="size-9 rounded-full bg-white text-black font-bold text-xs hover:bg-primary hover:text-white transition-all">M</button>
+                                    <button class="size-9 rounded-full bg-white text-black font-bold text-xs hover:bg-primary hover:text-white transition-all">L</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="px-1 flex-1 flex flex-col">
+                            <div class="flex justify-between items-start mb-1">
+                                <h4 class="text-lg font-bold text-white truncate group-hover:text-primary transition-colors">Cappuccino</h4>
+                                <span class="text-primary font-bold">45.000đ</span>
+                            </div>
+                            <p class="text-sm text-gray-500 line-clamp-2 mb-4 flex-1">Lớp bọt sữa dày, rắc thêm bột cacao.</p>
+                            <button onclick="addToCart('Cappuccino', 45000, 'https://lh3.googleusercontent.com/aida-public/AB6AXuC8S1teLD-F3w50ObbUmTUTG-MSr-inAj9Knstpz-EgWoCOOa6ZNppIILSJnaFRB-HfdjrgHFpq7VKtwoEtDCvdsnYgD_nCyrkr2ERmZX-7tWcyWSo3DcDJ2fCCnOOYDmBQlIYEGOV7KkD0cEVDnt_2hokOpUz9hHH9DrCcBw2b4W00HnQLLVVYtRMlErPNnX5TGjlEMBVdS-iKQ7Zoi1vjxsY2oAbvLXkcvez7nrZb7LCOr5E7dyM82fpTnOeZ26ow1LKihUISJ3A')"
+                                class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-primary text-white font-semibold transition-colors flex items-center justify-center gap-2 group-hover:bg-primary">
+    <span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+    Thêm món
+</button>
+                        </div>
+                    </div>
+                    <div class="group relative bg-surface-dark rounded-2xl p-3 border border-white/5 hover:border-primary/50 transition-all hover:shadow-xl hover:shadow-primary/5 flex flex-col opacity-60 hover:opacity-100">
+                        <div class="flex-1 flex items-center justify-center border-2 border-dashed border-white/10 rounded-xl min-h-[200px]">
+                            <span class="text-gray-500 text-sm font-medium">Hiển thị thêm 7 món...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-16 scroll-mt-24" id="tea">
+                <div class="flex items-center justify-between mb-6 sticky top-0 bg-background-dark/95 backdrop-blur z-10 py-4 -mx-8 px-8 border-b border-white/5">
+                    <h3 class="text-2xl font-bold text-white flex items-center gap-3">
+                        <span class="flex items-center justify-center size-10 rounded-full bg-primary/20 text-primary">
+<span class="material-symbols-outlined">emoji_food_beverage</span>
+                        </span>
+                        Nước Ép &amp; Trà
+                        <span class="text-sm font-normal text-gray-500 ml-2">(50 món)</span>
+                    </h3>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6">
+                    <div class="group relative bg-surface-dark rounded-2xl p-3 border border-white/5 hover:border-primary/50 transition-all hover:shadow-xl hover:shadow-primary/5 flex flex-col">
+                        <div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-surface-darker">
+                            <img src="./hình ảnh/tra-oi-hong-dau-tay.webp" class="w-full aspect-[4/3] object-cover rounded-xl mb-3" alt="Trà Vải ổi Hồng"> />
+                            <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-3 backdrop-blur-[2px]">
+                                <span class="text-xs font-bold text-white uppercase tracking-wide">Chọn Size</span>
+                                <div class="flex gap-2">
+                                    <button class="size-9 rounded-full bg-white text-black font-bold text-xs hover:bg-primary hover:text-white transition-all">M</button>
+                                    <button class="size-9 rounded-full bg-white text-black font-bold text-xs hover:bg-primary hover:text-white transition-all">L</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="px-1 flex-1 flex flex-col">
+                            <div class="flex justify-between items-start mb-1">
+                                <h4 class="text-lg font-bold text-white truncate group-hover:text-primary transition-colors">Trà Vải ổi Hồng</h4>
+                                <span class="text-primary font-bold">45.000đ</span>
+                            </div>
+                            <p class="text-sm text-gray-500 line-clamp-2 mb-4 flex-1">Hương ổi ngọt ngào kết hợp hoa hồng.</p>
+                            <button onclick="addToCart('Trà Vải Hoa Hồng', 45000, './hình ảnh/tra-oi-hong-dau-tay.webp')" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-primary text-white font-semibold transition-colors flex items-center justify-center gap-2 group-hover:bg-primary">
+    <span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+    Thêm món
+</button>
+                        </div>
+                    </div>
+                    <div class="group relative bg-surface-dark rounded-2xl p-3 border border-white/5 hover:border-primary/50 transition-all hover:shadow-xl hover:shadow-primary/5 flex flex-col">
+                        <div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-surface-darker">
+                            <img src="./hình ảnh/7_Tra-Olong-Sua-Da-Lat-1024x1024.png" class="w-full aspect-[4/3] object-cover rounded-xl mb-3" alt="Trà Oolong Sữa"> />
+                            <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-3 backdrop-blur-[2px]">
+                                <span class="text-xs font-bold text-white uppercase tracking-wide">Chọn Size</span>
+                                <div class="flex gap-2">
+                                    <button class="size-9 rounded-full bg-white text-black font-bold text-xs hover:bg-primary hover:text-white transition-all">M</button>
+                                    <button class="size-9 rounded-full bg-white text-black font-bold text-xs hover:bg-primary hover:text-white transition-all">L</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="px-1 flex-1 flex flex-col">
+                            <div class="flex justify-between items-start mb-1">
+                                <h4 class="text-lg font-bold text-white truncate group-hover:text-primary transition-colors">Trà Oolong Sữa</h4>
+                                <span class="text-primary font-bold">42.000đ</span>
+                            </div>
+                            <p class="text-sm text-gray-500 line-clamp-2 mb-4 flex-1">Oolong đậm vị, sữa béo ngậy.</p>
+                            <button onclick="addToCart('Trà Oolong Sữa', 42000, './hình ảnh/7_Tra-Olong-Sua-Da-Lat-1024x1024.png')" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-primary text-white font-semibold transition-colors flex items-center justify-center gap-2 group-hover:bg-primary">
+    <span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+    Thêm món
+</button>
+                        </div>
+                    </div>
+                    <div class="group relative bg-surface-dark rounded-2xl p-3 border border-white/5 hover:border-primary/50 transition-all hover:shadow-xl hover:shadow-primary/5 flex flex-col opacity-60 hover:opacity-100">
+                        <div class="flex-1 flex items-center justify-center border-2 border-dashed border-white/10 rounded-xl min-h-[200px]">
+                            <span class="text-gray-500 text-sm font-medium">Hiển thị thêm 8 món...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-20 scroll-mt-24" id="pastry">
+                <div class="flex items-center justify-between mb-6 sticky top-0 bg-background-dark/95 backdrop-blur z-10 py-4 -mx-8 px-8 border-b border-white/5">
+                    <h3 class="text-2xl font-bold text-white flex items-center gap-3">
+                        <span class="flex items-center justify-center size-10 rounded-full bg-primary/20 text-primary">
+<span class="material-symbols-outlined">bakery_dining</span>
+                        </span>
+                        Bánh Ngọt
+                        <span class="text-sm font-normal text-gray-500 ml-2">(50 món)</span>
+                    </h3>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6">
+                    <div class="group relative bg-surface-dark rounded-2xl p-3 border border-white/5 hover:border-primary/50 transition-all hover:shadow-xl hover:shadow-primary/5 flex flex-col">
+                        <div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-surface-darker">
+                            <img src="./hình ảnh/tiramisu.jpg" class="w-full aspect-[4/3] object-cover rounded-xl mb-3" alt="Tiramisu">
+                            <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-2 backdrop-blur-[2px]">
+                                <button class="px-4 py-2 bg-white text-black font-bold text-sm rounded-full hover:bg-primary hover:text-white transition-colors">Thêm nhanh</button>
+                            </div>
+                        </div>
+                        <div class="px-1 flex-1 flex flex-col">
+                            <div class="flex justify-between items-start mb-1">
+                                <h4 class="text-lg font-bold text-white truncate group-hover:text-primary transition-colors">Tiramisu</h4>
+                                <span class="text-primary font-bold">55.000đ</span>
+                            </div>
+                            <p class="text-sm text-gray-500 line-clamp-2 mb-4 flex-1">Bánh mềm, thơm vị cà phê &amp; rượu rum.</p>
+                            <button onclick="addToCart('Tiramisu', 55000, './hình ảnh/tiramisu.jpg')" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-primary text-white font-semibold transition-colors flex items-center justify-center gap-2 group-hover:bg-primary">
+    <span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+    Thêm món
+</button>
+                        </div>
+                    </div>
+                    <div class="group relative bg-surface-dark rounded-2xl p-3 border border-white/5 hover:border-primary/50 transition-all hover:shadow-xl hover:shadow-primary/5 flex flex-col opacity-60 hover:opacity-100">
+                        <div class="flex-1 flex items-center justify-center border-2 border-dashed border-white/10 rounded-xl min-h-[200px]">
+                            <span class="text-gray-500 text-sm font-medium">Hiển thị thêm 9 món...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+    <aside class="w-[420px] shrink-0 bg-surface-darker border-l border-white/5 flex flex-col shadow-2xl relative z-30">
+        <div class="h-16 px-6 border-b border-white/5 flex items-center justify-between shrink-0 bg-surface-darker">
+            <div class="flex items-center gap-3">
+                <span class="material-symbols-outlined text-primary">shopping_bag</span>
+                <h2 class="text-xl font-bold text-white">Giỏ hàng</h2>
+            </div>
+            <button class="text-gray-400 hover:text-white transition-colors bg-white/5 hover:bg-white/10 p-2 rounded-full">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+
+        <div class="flex-1 overflow-y-auto p-5 space-y-3 custom-scrollbar bg-[#1e1711]">
+            <div class="flex gap-4 p-3 rounded-xl bg-surface-dark border border-white/5 hover:border-primary/30 transition-colors group relative shadow-lg">
+
+
+            </div>
+            <div class="flex-1 min-w-0 flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between items-start">
+
+                    </div>
+
+                </div>
+                <div class="flex items-center justify-between mt-1">
+
+                </div>
+                <div class="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <button class="text-gray-500 hover:text-primary p-1"><span class="material-symbols-outlined text-[16px]">edit</span></button>
+                    <button class="text-gray-500 hover:text-red-500 p-1"><span class="material-symbols-outlined text-[16px]">delete</span></button>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <div class="flex gap-4 p-3 rounded-xl bg-surface-dark border border-white/5 hover:border-primary/30 transition-colors group relative shadow-lg">
+
+
+        </div>
+        <div class="flex-1 min-w-0 flex flex-col justify-between">
+
+        </div>
+        <div class="p-5 bg-surface-darker border-t border-white/10 shadow-[0_-5px_20px_rgba(0,0,0,0.3)] z-40">
+            <h3 class="text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-2">Phương thức thanh toán</h3>
+
+            <div class="grid grid-cols-2 gap-2 mb-4 p-1 bg-[#15100c] rounded-xl border border-white/5">
+                <button onclick="switchPayment('cash')" id="btn-cash" class="flex items-center justify-center gap-2 py-2.5 rounded-lg text-sm font-medium transition-all text-gray-400 hover:text-white hover:bg-white/5">
+                    <span class="material-symbols-outlined text-[18px]">payments</span>
+                    Tiền mặt
+                </button>
+                <button onclick="switchPayment('transfer')" id="btn-transfer" class="flex items-center justify-center gap-2 py-2.5 rounded-lg transition-all bg-surface-dark text-primary shadow-lg ring-1 ring-primary/20 text-sm font-bold">
+                    <span class="material-symbols-outlined text-[18px]">qr_code_2</span>
+                    Chuyển khoản
+                </button>
+            </div>
+
+            <div id="payment-transfer" class="space-y-3 bg-background-dark p-3 rounded-xl border border-white/5">
+                <div class="relative group">
+                    <label class="absolute -top-2 left-2 bg-background-dark px-1 text-[9px] text-primary font-bold tracking-wide uppercase">Ngân hàng</label>
+                    <div class="w-full flex items-center justify-between bg-transparent border border-primary/30 rounded-lg px-3 py-2.5 text-white text-xs">
+                        <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary text-base">account_balance</span>
+                            <span class="font-medium">MB Bank (Quân Đội)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex gap-3">
+                    <div class="size-24 bg-white rounded-lg p-1 shrink-0 relative">
+                        <img alt="QR Code" class="w-full h-full object-contain" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=THU-TIEN-CAFE" />
+                    </div>
+                    <div class="flex-1 flex flex-col justify-center space-y-1">
+                        <div>
+                            <p class="text-[9px] text-gray-500 uppercase">Chủ tài khoản</p>
+                            <p class="font-bold text-white text-xs">NGUYEN VAN A</p>
+                        </div>
+                        <div>
+                            <p class="text-[9px] text-gray-500 uppercase">Số tài khoản</p>
+                            <div class="flex items-center gap-2">
+                                <p class="font-mono text-primary font-bold text-sm">1234 5678 9999</p>
+                                <button class="text-gray-500 hover:text-white"><span class="material-symbols-outlined text-[12px]">content_copy</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="payment-cash" class="hidden space-y-3 bg-background-dark p-4 rounded-xl border border-white/5">
+                <div class="text-center py-2">
+                    <p class="text-xs text-gray-400 mb-1">Quý khách vui lòng chuẩn bị số tiền:</p>
+                    <p class="text-2xl font-black text-white">86.400đ</p>
+                </div>
+                <div class="space-y-2">
+                    <p class="text-[9px] text-gray-500 uppercase font-bold tracking-widest">Gợi ý mệnh giá (để trả tiền thừa):</p>
+                    <div class="grid grid-cols-3 gap-2">
+                        <button class="py-2 text-[10px] border border-white/10 rounded-lg text-gray-300 hover:border-primary hover:text-primary transition-colors">100.000đ</button>
+                        <button class="py-2 text-[10px] border border-white/10 rounded-lg text-gray-300 hover:border-primary hover:text-primary transition-colors">200.000đ</button>
+                        <button class="py-2 text-[10px] border border-white/10 rounded-lg text-gray-300 hover:border-primary hover:text-primary transition-colors">500.000đ</button>
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="confirmCheckout()" class="w-full mt-4 bg-primary hover:bg-primary-dark text-white font-bold text-base py-3.5 rounded-xl shadow-lg shadow-primary/25 flex items-center justify-center gap-2 transition-all active:scale-[0.98] group">
+    <span id="submit-text">Xác nhận đã thanh toán</span>
+    <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform text-lg">check_circle</span>
+</button>
+        </div>
+    </aside>
+    <script>
+        // Khởi tạo mảng giỏ hàng
+        let cart = [];
+
+        // Chức năng 1: Thêm món vào giỏ
+        function addToCart(name, price, image) {
+            const itemIndex = cart.findIndex(item => item.name === name);
+            if (itemIndex > -1) {
+                cart[itemIndex].quantity += 1;
+            } else {
+                cart.push({
+                    name,
+                    price,
+                    image,
+                    quantity: 1
+                });
+            }
+            renderCart();
+        }
+
+        function confirmCheckout() {
+            if (cart.length === 0) {
+                alert("Giỏ hàng của bạn đang trống!");
+                return;
+            }
+
+            // Tạo nội dung thông báo
+            let billDetail = "CHI TIẾT THANH TOÁN:\n";
+            billDetail += "--------------------------\n";
+
+            cart.forEach((item, index) => {
+                let lineTotal = item.price * item.quantity;
+                // Hiển thị rõ: Tên - Số lượng x Đơn giá = Thành tiền
+                billDetail += `${index + 1}. ${item.name}\n`;
+                billDetail += `   ${item.quantity} x ${formatVND(item.price)} = ${formatVND(lineTotal)}\n`;
+            });
+
+            // Tính toán tổng tiền (giống logic trong renderCart của bạn)
+            let subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+            let vat = subtotal * 0.08;
+            let total = subtotal + vat;
+
+            billDetail += "--------------------------\n";
+            billDetail += `Tạm tính: ${formatVND(subtotal)}\n`;
+            billDetail += `Thuế VAT (8%): ${formatVND(vat)}\n`;
+            billDetail += `TỔNG CỘNG: ${formatVND(total)}\n\n`;
+            billDetail += "Bạn xác nhận thanh toán chứ?";
+
+            // Hiển thị hộp thoại xác nhận của hệ thống
+            if (confirm(billDetail)) {
+                alert("Thanh toán thành công! Cảm ơn quý khách.");
+                cart = []; // Xóa giỏ hàng sau khi xong
+                renderCart(); // Cập nhật lại giao diện web
+            }
+        }
+
+        // Chức năng 2: Thay đổi số lượng món (+ / -)
+        function updateQuantity(name, change) {
+            const itemIndex = cart.findIndex(item => item.name === name);
+            if (itemIndex > -1) {
+                cart[itemIndex].quantity += change;
+                if (cart[itemIndex].quantity <= 0) {
+                    cart.splice(itemIndex, 1); // Xóa món nếu số lượng về 0
+                }
+            }
+            renderCart();
+        }
+
+        // Chức năng 3: Xóa món hoàn toàn
+        function removeFromCart(name) {
+            cart = cart.filter(item => item.name !== name);
+            renderCart();
+        }
+
+        // Định dạng tiền VND
+        function formatVND(amount) {
+            return amount.toLocaleString('vi-VN') + 'đ';
+        }
+
+        // Chức năng chính: Cập nhật giao diện giỏ hàng
+        function renderCart() {
+            // Tìm đúng vùng chứa giỏ hàng theo class của bạn
+            const cartItemsWrapper = document.querySelector('.flex-1.overflow-y-auto.p-5.space-y-3');
+            const cartCountHeader = document.querySelector('h2.text-xl.font-bold');
+
+            // Hiển thị số lượng món trên tiêu đề
+            if (cartCountHeader) cartCountHeader.innerText = `Giỏ hàng (${cart.length})`;
+
+            if (cart.length === 0) {
+                cartItemsWrapper.innerHTML = '<div class="text-center py-10 text-gray-500 italic text-sm">Chưa có món nào trong giỏ</div>';
+            } else {
+                // Render danh sách món dựa theo đúng form HTML/CSS của bạn
+                cartItemsWrapper.innerHTML = cart.map(item => `
+                <div class="flex gap-4 p-3 rounded-xl bg-surface-dark border border-white/5 group relative shadow-lg">
+                    <div class="size-16 rounded-lg bg-gray-800 overflow-hidden shrink-0">
+                        <img src="${item.image}" class="w-full h-full object-cover" />
+                    </div>
+                    <div class="flex-1 min-w-0 flex flex-col justify-between">
+                        <div class="flex justify-between items-start">
+                            <h4 class="font-bold text-white text-sm truncate pr-2">${item.name}</h4>
+                            <span class="font-bold text-primary text-sm">${formatVND(item.price * item.quantity)}</span>
+                        </div>
+                        <div class="flex items-center justify-between mt-1">
+                            <div class="flex items-center bg-black/20 rounded-lg border border-white/5 scale-90 origin-left">
+                                <button onclick="updateQuantity('${item.name}', -1)" class="size-6 flex items-center justify-center text-gray-400 hover:text-white">-</button>
+                                <span class="w-6 text-center text-[10px] font-bold text-white">${item.quantity}</span>
+                                <button onclick="updateQuantity('${item.name}', 1)" class="size-6 flex items-center justify-center text-gray-400 hover:text-white">+</button>
+                            </div>
+                            <button onclick="removeFromCart('${item.name}')" class="text-gray-500 hover:text-red-500 p-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                                <span class="material-symbols-outlined text-[16px]">delete</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            }
+
+            // --- Cập nhật giá tiền ---
+            let subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+            let vat = subtotal * 0.08;
+            let total = subtotal + vat;
+
+            // Tìm các thẻ span hiển thị tiền dựa theo class hiện có của bạn
+            const priceSpans = document.querySelectorAll('.p-5.bg-surface-darker span.font-medium, span.text-2xl.text-primary');
+            if (priceSpans.length >= 3) {
+                priceSpans[0].innerText = formatVND(subtotal); // Tạm tính
+                priceSpans[1].innerText = formatVND(vat); // VAT
+                priceSpans[2].innerText = formatVND(total); // Tổng thanh toán
+            }
+        }
+
+        // Chức năng xóa tất cả
+        const clearBtn = document.querySelector('button.text-gray-400.hover\\:text-red-500');
+        if (clearBtn) {
+            clearBtn.onclick = () => {
+                cart = [];
+                renderCart();
+            };
+        }
+
+        function confirmCheckout() {
+            if (cart.length === 0) {
+                alert("Giỏ hàng của bạn đang trống!"); // Bạn có thể thay bằng modal báo lỗi nếu muốn
+                return;
+            }
+
+            const modal = document.getElementById('checkout-modal');
+            const billContent = document.getElementById('bill-content');
+            const billSummary = document.getElementById('bill-summary');
+
+            // 1. Hiển thị từng món cộng thêm rõ ràng
+            billContent.innerHTML = cart.map((item, index) => `
+        <div class="flex justify-between items-start">
+            <div>
+                <p class="text-white font-semibold text-sm">${item.name}</p>
+                <p class="text-xs text-gray-500">${item.quantity} x ${formatVND(item.price)}</p>
+            </div>
+            <p class="text-primary font-bold text-sm">${formatVND(item.price * item.quantity)}</p>
+        </div>
+    `).join('');
+
+            // 2. Tính toán tiền (VAT 8%)
+            let subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+            let vat = subtotal * 0.08;
+            let total = subtotal + vat;
+
+            // 3. Hiển thị phần tổng cộng
+            billSummary.innerHTML = `
+        <div class="flex justify-between text-xs text-gray-400">
+            <span>Tạm tính:</span>
+            <span>${formatVND(subtotal)}</span>
+        </div>
+        <div class="flex justify-between text-xs text-gray-400">
+            <span>Thuế (8%):</span>
+            <span>${formatVND(vat)}</span>
+        </div>
+        <div class="flex justify-between items-end pt-3 border-t border-white/10 mt-2">
+            <span class="font-bold text-white text-base">TỔNG CỘNG:</span>
+            <span class="font-black text-xl text-primary">${formatVND(total)}</span>
+        </div>
+    `;
+
+            // Hiện modal
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('checkout-modal').classList.add('hidden');
+        }
+
+        function completePayment() {
+            alert("Cảm ơn bạn đã mua hàng!"); // Thông báo thành công
+            cart = []; // Xóa giỏ hàng
+            renderCart(); // Cập nhật lại giao diện web
+            closeModal(); // Đóng bảng
+        }
+    </script>
+    <div id="checkout-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
+        <div class="bg-[#2a1f14] w-full max-w-md rounded-3xl border border-white/10 shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-300">
+            <div class="p-6 border-b border-white/5 flex justify-between items-center">
+                <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary">receipt_long</span> Chi tiết hóa đơn
+                </h3>
+                <button onclick="closeModal()" class="text-gray-500 hover:text-white transition-colors">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+            </div>
+
+            <div id="bill-content" class="p-6 max-h-[50vh] overflow-y-auto space-y-4 custom-scrollbar">
+            </div>
+
+            <div class="p-6 bg-[#221910] border-t border-white/5 space-y-4">
+                <div id="bill-summary" class="space-y-2">
+                </div>
+                <div class="flex gap-3">
+                    <button onclick="closeModal()" class="flex-1 px-4 py-3 rounded-xl border border-white/10 text-gray-400 font-medium hover:bg-white/5 transition-all">
+                    Đóng
+                </button>
+                    <button onclick="completePayment()" class="flex-[2] bg-primary hover:bg-primary-dark text-white font-bold py-3 rounded-xl shadow-lg shadow-primary/20 transition-all active:scale-95">
+                    Hoàn tất thanh toán
+                </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="checkout-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
+        <div class="bg-[#1a140f] w-full max-w-md rounded-3xl border border-white/10 shadow-2xl overflow-hidden">
+            <div class="p-6 border-b border-white/5 flex justify-between items-center bg-[#241b14]">
+                <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary">receipt_long</span> Hóa đơn
+                </h3>
+                <button onclick="closeModal()" class="text-gray-500 hover:text-white"><span class="material-symbols-outlined">close</span></button>
+            </div>
+            <div id="bill-content" class="p-6 max-h-[50vh] overflow-y-auto space-y-4 custom-scrollbar"></div>
+            <div class="p-6 bg-[#120d09] border-t border-white/10 space-y-3">
+                <div id="bill-summary" class="space-y-2 text-sm text-gray-400"></div>
+                <button onclick="completePayment()" class="w-full bg-primary hover:bg-primary-dark text-white font-bold py-3 rounded-xl mt-4">Xác nhận xong</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
